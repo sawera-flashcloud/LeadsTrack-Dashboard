@@ -1,0 +1,62 @@
+
+<!-- LINKEDIN TRACKER -->
+<div class="tab-content" id="tab-linkedin-tracker">
+  <div class="li-stats" id="li-stats"></div>
+
+  <div class="grid-2 mb16">
+    <div class="grid-card">
+      <div class="section-title">Smart Activity Dump</div>
+      <textarea id="li-smart-dump" placeholder="Paste raw LinkedIn activity text here..." style="width:100%;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;min-height:120px;resize:vertical;outline:none"></textarea>
+      <button class="btn-primary mt16" onclick="parseSmartDump()">🤖 Parse Dump with Groq</button>
+    </div>
+    <div class="grid-card">
+      <div class="section-title">Quick Activity Log</div>
+      <div class="flex gap8 flex-wrap mb16">
+        <button class="qlog-btn" onclick="logLiActivity('connection_request')">➕ Connection</button>
+        <button class="qlog-btn" onclick="logLiActivity('message')">💬 Message</button>
+        <button class="qlog-btn" onclick="logLiActivity('profile_view')">👤 Profile View</button>
+        <button class="qlog-btn" onclick="logLiActivity('connection_accepted')">✅ Accepted</button>
+        <button class="qlog-btn" onclick="logLiActivity('reply_received')">📥 Reply</button>
+        <button class="qlog-btn" onclick="logLiActivity('meeting_booked')">📅 Meeting</button>
+        <button class="qlog-btn" onclick="logLiActivity('note')">📝 Note</button>
+        <button class="qlog-btn" onclick="logLiActivity('follow_up')">🔄 Follow-up</button>
+      </div>
+      <div class="form-row" style="margin-top:8px">
+        <div class="form-group"><label>Lead Name</label><input id="quick-li-name" placeholder="Name"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Title</label><input id="quick-li-title" placeholder="Job title"></div>
+        <div class="form-group"><label>Company</label><input id="quick-li-company" placeholder="Company"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="flex:2"><label>LinkedIn Link</label><input id="quick-li-link" placeholder="https://linkedin.com/in/..."></div>
+      </div>
+      <button class="btn-sm btn-secondary" onclick="logQuickCustom()">Log Activity</button>
+    </div>
+  </div>
+
+  <div class="section-title">Activity Feed</div>
+  <div class="flex gap8 flex-wrap mb16">
+    <select id="li-feed-filter" onchange="loadLinkedInTracker()" style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:12px;outline:none">
+      <option value="">All Types</option>
+      <option value="connection_request">Connection Requests</option>
+      <option value="message">Messages</option>
+      <option value="profile_view">Profile Views</option>
+      <option value="connection_accepted">Accepted</option>
+      <option value="reply_received">Replies</option>
+      <option value="meeting_booked">Meetings</option>
+    </select>
+  </div>
+  <div class="activity-feed" id="li-feed"></div>
+
+  <div class="grid-2 mt16">
+    <div class="grid-card">
+      <div class="section-title">LinkedIn Performance</div>
+      <div id="li-performance"></div>
+    </div>
+    <div class="grid-card">
+      <div class="section-title">Follow-ups Due</div>
+      <div id="li-followups"></div>
+    </div>
+  </div>
+</div>

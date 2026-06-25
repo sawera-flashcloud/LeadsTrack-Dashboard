@@ -6,12 +6,17 @@ load_dotenv(_env_path)
 
 # Read MATON_API_KEY directly from .env to override inherited stale shell value
 import re as _re
-with open(_env_path) as _f:
-    for _line in _f:
-        _m = _re.match(r'^MATON_API_KEY=(.+)$', _line.strip())
-        if _m:
-            os.environ['MATON_API_KEY'] = _m.group(1)
-            break
+try:
+    with open(_env_path) as _f:
+        for _line in _f:
+            _m = _re.match(r'^MATON_API_KEY=(.+)$', _line.strip())
+            if _m:
+                os.environ['MATON_API_KEY'] = _m.group(1)
+                break
+except FileNotFoundError:
+    # .env file doesn't exist - this is normal in production
+    # Environment variables should be set via platform (e.g., Render environment variables)
+    pass
 
 
 class Config:

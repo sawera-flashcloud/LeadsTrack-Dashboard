@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from app.config import config_by_name
@@ -46,19 +46,10 @@ def create_app(config_name='dev'):
     app.register_blueprint(meetings_bp)
 
     @app.route('/')
-    def index():
-        return {
-            'app': 'Lead Hunter AI',
-            'version': '1.0.0',
-            'status': 'running',
-        }
-
     @app.route('/app')
     @app.route('/dashboard')
     def serve_frontend():
-        from flask import send_from_directory
-        frontend_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'frontend')
-        return send_from_directory(frontend_dir, 'index.html')
+        return render_template('index.html')
 
     @app.route('/api/health')
     def health():

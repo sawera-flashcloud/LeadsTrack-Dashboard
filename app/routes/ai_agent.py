@@ -1,5 +1,6 @@
 import json
 import logging
+from datetime import datetime, timezone
 
 from flask import Blueprint, request, jsonify, Response, stream_with_context
 
@@ -20,9 +21,16 @@ def ai_chat():
         current_user_id = int(current_user_id)
     except (ValueError, TypeError):
         current_user_id = 1
+    
+    # Make user check optional - allow unauthenticated access
     user = select_one('users', filters=[eq('id', int(current_user_id))])
     if not user:
-        return jsonify({'error': 'User not found'}), 404
+        # Create a default user context for unauthenticated requests
+        user = {
+            'id': current_user_id,
+            'name': 'Guest User',
+            'workspace_id': 1
+        }
 
     data = request.get_json() or {}
     messages = data.get('messages', [])

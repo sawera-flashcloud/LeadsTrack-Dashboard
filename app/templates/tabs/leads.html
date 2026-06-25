@@ -1,0 +1,33 @@
+
+<!-- LEADS -->
+<div class="tab-content" id="tab-leads">
+  <div class="filter-bar">
+    <input type="text" id="leads-search" placeholder="Search by name, company, or title..." oninput="loadLeads()">
+    <select id="leads-source" onchange="loadLeads()">
+      <option value="">All Sources</option>
+      <option value="linkedin">LinkedIn</option>
+      <option value="referral">Referral</option>
+      <option value="web">Web</option>
+      <option value="email">Email</option>
+      <option value="manual">Manual</option>
+      <option value="google_maps">Google Maps</option>
+      <option value="apollo">Apollo.io</option>
+      <option value="hunter">Hunter.io</option>
+    </select>
+    <select id="leads-status" onchange="loadLeads()">
+      <option value="">All Status</option>
+      <option value="new">🆕 New</option>
+      <option value="contacted">📞 Contacted</option>
+      <option value="replied">💬 Replied</option>
+      <option value="interested">🎯 Interested</option>
+      <option value="qualified">⭐ Qualified</option>
+      <option value="follow_up">🔁 Follow Up</option>
+      <option value="meeting">📅 Meeting</option>
+      <option value="closed">✅ Closed</option>
+      <option value="not_to_contact">🚫 Not to Contact</option>
+    </select>
+    <button class="btn-danger btn-sm" id="batch-delete-btn" style="display:none;margin-left:auto" onclick="batchDeleteLeads()">Delete Selected</button>
+  </div>
+  <div class="table-container" id="leads-table"></div>
+  <div class="pagination" id="leads-pagination"></div>
+</div>

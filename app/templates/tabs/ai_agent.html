@@ -1,0 +1,44 @@
+
+<!-- AI AGENT -->
+<div class="tab-content" id="tab-ai-agent">
+  <div class="groq-banner">
+    <div class="groq-icon">⚡</div>
+    <div>
+      <h3>Groq AI Agent</h3>
+      <div class="groq-sub">Llama 3 70B · LPU Inference Engine · Ultra-low latency</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;margin-bottom:12px">
+    <button class="btn-sm" onclick="showTab('linkedin-tracker')" style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border);color:var(--text-prim);cursor:pointer;border-radius:8px;font-size:13px;font-weight:600">
+      🔗 LinkedIn Tracker
+    </button>
+    <button class="btn-sm" onclick="showTab('email-generator')" style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border);color:var(--text-prim);cursor:pointer;border-radius:8px;font-size:13px;font-weight:600">
+      ✉️ Email Generator
+    </button>
+  </div>
+
+  <div>
+    <div class="section-title">Chat with AI Agent</div>
+    <div class="chat-container">
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg ai">
+          <div class="sender">AI Agent</div>
+          <div class="bubble">Hi! I'm your Lead Hunter AI powered by Groq. Ask me to research leads, draft outreach, or analyze pipeline.</div>
+        </div>
+      </div>
+      <div class="quick-prompts">
+        <span class="quick-prompt" onclick="sendQuickPrompt('Find me 5 SaaS companies in SF that need email marketing')">Find 5 SaaS leads</span>
+        <span class="quick-prompt" onclick="sendQuickPrompt('Draft a cold LinkedIn message for a VP of Sales')">Draft LI message</span>
+        <span class="quick-prompt" onclick="sendQuickPrompt('Analyze my pipeline performance')">Analyze pipeline</span>
+        <span class="quick-prompt" onclick="sendQuickPrompt('Summarize best SDR outreach strategies')">SDR strategies</span>
+        <span class="quick-prompt" onclick="fillLinkedInGmailPrompt()">📧 LinkedIn Email Activity</span>
+        <span class="quick-prompt" onclick="fillLinkedInNetworkingPrompt()">🔗 LinkedIn Networking</span>
+      </div>
+      <div class="chat-input-area">
+        <textarea id="chat-input" placeholder="Ask the AI agent... (Shift+Enter for new line, Enter to send)" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMessage()}"></textarea>
+        <button class="btn-primary" onclick="sendChatMessage()" style="align-self:flex-end">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

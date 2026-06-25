@@ -72,7 +72,13 @@ def apply_filters(query, filters):
 
 def select(table, columns='*', filters=None, order=None, limit=None, offset=None, count=None):
     """Select rows from a table."""
-    query = supabase.table(table).select(columns)
+    if supabase is None:
+        logger.error("Supabase client not initialized")
+        return type('obj', (object,), {'data': [], 'count': 0})()
+    if count:
+        query = supabase.table(table).select(columns, count='exact')
+    else:
+        query = supabase.table(table).select(columns)
     if filters:
         query = apply_filters(query, filters)
     if order:
@@ -81,12 +87,12 @@ def select(table, columns='*', filters=None, order=None, limit=None, offset=None
         query = query.limit(limit)
     if offset:
         query = query.offset(offset)
-    if count:
-        query = query.execute()  # count mode
     return query.execute()
 
 def select_one(table, columns='*', filters=None):
     """Select the first matching row."""
+    if supabase is None:
+        return None
     query = supabase.table(table).select(columns)
     if filters:
         query = apply_filters(query, filters)
@@ -96,10 +102,14 @@ def select_one(table, columns='*', filters=None):
 
 def insert(table, data):
     """Insert rows. data can be a dict or list of dicts."""
+    if supabase is None:
+        raise RuntimeError("Supabase client not initialized")
     return supabase.table(table).insert(data).execute()
 
 def update(table, data, filters):
     """Update rows matching filters."""
+    if supabase is None:
+        raise RuntimeError("Supabase client not initialized")
     query = supabase.table(table).update(data)
     if filters:
         query = apply_filters(query, filters)
@@ -107,6 +117,8 @@ def update(table, data, filters):
 
 def delete(table, filters):
     """Delete rows matching filters."""
+    if supabase is None:
+        raise RuntimeError("Supabase client not initialized")
     query = supabase.table(table).delete()
     if filters:
         query = apply_filters(query, filters)
@@ -114,11 +126,13 @@ def delete(table, filters):
 
 def count(table, filters=None):
     """Count rows matching filters."""
+    if supabase is None:
+        return 0
     query = supabase.table(table).select('id', count='exact')
     if filters:
         query = apply_filters(query, filters)
     result = query.execute()
     try:
         return int(result.count) if hasattr(result, 'count') and result.count else len(result.data)
-    except:
+    except Exception:
         return 0

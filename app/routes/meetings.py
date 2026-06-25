@@ -3,7 +3,7 @@
 import logging
 from datetime import datetime, timezone
 from flask import Blueprint, jsonify, request
-from app.services.maton_calendar import get_events, get_meetings_weekly
+from app.services.maton_calendar import get_events, get_meetings_weekly, get_upcoming_only
 from app.services.supabase import select_one, eq
 
 logger = logging.getLogger(__name__)
@@ -30,7 +30,7 @@ def meetings_this_week():
         return jsonify({'error': 'User not found'}), 404
 
     try:
-        data = get_meetings_weekly()
+        data = get_upcoming_only(days_ahead=2, max_results=10)
         return jsonify(data)
     except ValueError as e:
         logger.warning(f'Maton not configured: {e}')
@@ -52,10 +52,10 @@ def upcoming_meetings():
     if not user:
         return jsonify({'error': 'User not found'}), 404
 
-    days_ahead = request.args.get('days', 14, type=int)
+    days_ahead = request.args.get('days', 2, type=int)
 
     try:
-        data = get_events(days_back=0, days_ahead=days_ahead, max_results=50)
+        data = get_upcoming_only(days_ahead=days_ahead, max_results=10)
         return jsonify(data)
     except ValueError as e:
         return jsonify({'error': 'Calendar not configured', 'detail': str(e)}), 503

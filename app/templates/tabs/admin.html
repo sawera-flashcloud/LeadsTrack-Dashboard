@@ -1,0 +1,41 @@
+
+<!-- ADMIN -->
+<div class="tab-content" id="tab-admin">
+  <div class="section-title">SDR Team Performance</div>
+  <div class="table-container mb16">
+    <table>
+      <thead><tr><th>SDR</th><th>Leads Found</th><th>Emails Sent</th><th>Meetings</th><th>Conversion</th><th>Activity</th></tr></thead>
+      <tbody id="admin-sdr-body">
+        <tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px"><span class="spinner"></span> Loading team data...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">System Health</div>
+  <div class="grid-2">
+    <div class="grid-card" id="sys-health">
+      <div class="flex gap12 items-center mb16">
+        <span class="health-dot health-ok" id="health-dot"></span>
+        <span id="health-text" style="font-size:14px;font-weight:500">Checking...</span>
+      </div>
+      <div id="health-details" style="font-size:13px;color:var(--text-sec)"></div>
+    </div>
+    <div class="grid-card">
+      <div class="section-title">Quick Stats</div>
+      <div class="flex gap8 flex-wrap" id="admin-quick-stats">
+        <div style="flex:1;min-width:120px;padding:12px;background:var(--card);border-radius:var(--radius-sm);text-align:center">
+          <div id="admin-stat-users" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--accent)">—</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Total Users</div>
+        </div>
+        <div style="flex:1;min-width:120px;padding:12px;background:var(--card);border-radius:var(--radius-sm);text-align:center">
+          <div id="admin-stat-uptime" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--success)">—</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Uptime</div>
+        </div>
+        <div style="flex:1;min-width:120px;padding:12px;background:var(--card);border-radius:var(--radius-sm);text-align:center">
+          <div id="admin-stat-response" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--warning)">—</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Avg Response</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

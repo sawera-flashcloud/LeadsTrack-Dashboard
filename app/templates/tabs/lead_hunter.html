@@ -1,0 +1,68 @@
+<!-- LEAD HUNTER -->
+<div class="tab-content" id="tab-lead-hunter">
+  <div class="section-title">Select Data Sources</div>
+  <div class="source-grid mb16" id="source-grid">
+    <div class="source-item" data-source="google-maps" onclick="toggleSource(this)"><div class="si-icon">🗺️</div><div class="si-name">Google Maps</div><div class="si-desc">Local business data</div></div>
+    <div class="source-item" data-source="apollo" onclick="toggleSource(this)"><div class="si-icon">🚀</div><div class="si-name">Apollo.io</div><div class="si-desc">B2B contact DB</div></div>
+    <div class="source-item" data-source="hunter" onclick="toggleSource(this)"><div class="si-icon">📧</div><div class="si-name">Hunter.io</div><div class="si-desc">Email finder</div></div>
+    <div class="source-item" data-source="linkedin" onclick="toggleSource(this)"><div class="si-icon">🔗</div><div class="si-name">LinkedIn</div><div class="si-desc">Professional network</div></div>
+    <div class="source-item" data-source="firecrawl" onclick="toggleSource(this)"><div class="si-icon">🔥</div><div class="si-name">Firecrawl</div><div class="si-desc">Web scraping</div></div>
+    <div class="source-item" data-source="serper" onclick="toggleSource(this)"><div class="si-icon">🔍</div><div class="si-name">Serper.dev</div><div class="si-desc">Google search API</div></div>
+  </div>
+
+  <!-- Google Maps Scraper Section -->
+  <div class="section-title">🗺️ Google Maps Scraper</div>
+  <div class="card mb16" style="background:linear-gradient(135deg,rgba(91,141,239,0.05),rgba(124,109,250,0.05));border:1px solid rgba(91,141,239,0.2)">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)">
+      <div style="font-size:32px">🗺️</div>
+      <div style="flex:1">
+        <div style="font-size:15px;font-weight:600;color:var(--text)">Google Maps Business Scraper</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Find local businesses with contact info, ratings, and addresses</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Business Type / Industry</label><input id="gmaps-query" placeholder="e.g. restaurants, dentists, real estate agents" value=""></div>
+      <div class="form-group"><label>Location</label><input id="gmaps-location" placeholder="e.g. San Francisco, CA" value="San Francisco"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Number of Results</label><input id="gmaps-limit" type="number" placeholder="10" value="10" min="1" max="50"></div>
+      <div class="form-group" style="display:flex;align-items:flex-end">
+        <button class="btn-primary" onclick="runGoogleMapsScraper()" style="width:100%">🚀 Scrape Google Maps</button>
+      </div>
+    </div>
+    <div id="gmaps-status" style="font-size:13px;color:var(--text-muted);margin-top:12px;min-height:20px"></div>
+  </div>
+
+  <div class="section-title">ICP Filters</div>
+  <div class="card mb16">
+    <div class="form-row">
+      <div class="form-group"><label>Industry</label><input id="icp-industry" placeholder="e.g. SaaS, Fintech, Healthcare" value="SaaS"></div>
+      <div class="form-group"><label>Location</label><input id="icp-location" placeholder="e.g. San Francisco, Remote" value="San Francisco"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Company Size</label><input id="icp-size" placeholder="e.g. 10-50, 51-200" value="10-200"></div>
+      <div class="form-group"><label>Job Title</label><input id="icp-title" placeholder="e.g. VP Sales, CRO" value="VP Sales"></div>
+    </div>
+    <div class="form-group"><label>Keywords</label><input id="icp-keywords" placeholder="e.g. AI, CRM, enterprise"></div>
+  </div>
+
+  <div class="flex gap12 items-center mb16">
+    <button class="btn-primary" onclick="runHunt()">🚀 Run Hunt</button>
+    <span id="hunt-status" style="font-size:13px;color:var(--text-muted)"></span>
+  </div>
+
+  <div class="grid-2">
+    <div class="grid-card">
+      <div class="section-title">Score Distribution</div>
+      <div id="score-dist"></div>
+    </div>
+    <div class="grid-card">
+      <div class="section-title">Recent Hunts</div>
+      <div id="recent-hunts" style="font-size:13px;color:var(--text-muted)">No hunts yet. Configure sources and run your first hunt.</div>
+          <div id="hunt-results" style="display:none;margin-top:16px">
+            <div style="font-size:13px;color:var(--text-sec);margin-bottom:8px">Last Hunt Results:</div>
+            <div style="max-height:400px;overflow-y:auto" id="hunt-results-list"></div>
+          </div>
+    </div>
+  </div>
+</div>

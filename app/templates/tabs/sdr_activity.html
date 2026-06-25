@@ -1,0 +1,51 @@
+
+<!-- SDR ACTIVITY -->
+<div class="tab-content" id="tab-activity">
+  <!-- Period Tabs -->
+  <div class="period-tabs" style="display:flex;gap:8px;margin-bottom:16px">
+    <button class="btn-sm btn-period active" onclick="loadActivity('daily')" id="period-daily">📅 Daily</button>
+    <button class="btn-sm btn-period" onclick="loadActivity('weekly')" id="period-weekly">📆 Weekly</button>
+    <button class="btn-sm btn-period" onclick="loadActivity('monthly')" id="period-monthly">🗓️ Monthly</button>
+  </div>
+
+  <!-- Metrics Cards -->
+  <div class="stat-grid" id="activity-metrics">
+    <div class="stat-card"><div class="stat-label">Emails Sent</div><div class="stat-value" id="act-emails_sent" style="color:var(--accent)">—</div></div>
+    <div class="stat-card"><div class="stat-label">Connections Sent</div><div class="stat-value" id="act-connections_sent" style="color:#5b8def">—</div></div>
+    <div class="stat-card"><div class="stat-label">Replies</div><div class="stat-value" id="act-replies" style="color:var(--warning)">—</div></div>
+    <div class="stat-card"><div class="stat-label">Meetings</div><div class="stat-value" id="act-meetings" style="color:var(--success)">—</div></div>
+    <div class="stat-card"><div class="stat-label">Positive Replies</div><div class="stat-value" id="act-positive_replies" style="color:var(--danger)">—</div></div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid-2">
+    <div class="grid-card">
+      <div class="section-title">Daily Trend</div>
+      <div id="act-chart-daily" style="min-height:160px;padding:12px"></div>
+    </div>
+    <div class="grid-card">
+      <div class="section-title">Weekly Trend</div>
+      <div id="act-chart-weekly" style="min-height:160px;padding:12px"></div>
+    </div>
+  </div>
+
+  <!-- Manual Activity Log (kept from original) -->
+  <div class="card mt16">
+    <div class="section-title">Manual Activity Log</div>
+    <div class="form-row">
+      <div class="form-group"><label>Activity Type</label>
+        <select id="manual-act-type">
+          <option value="email_sent">Email Sent</option>
+          <option value="call">Call</option>
+          <option value="meeting">Meeting</option>
+          <option value="linkedin">LinkedIn Activity</option>
+          <option value="research">Research</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Lead Name</label><input id="manual-act-lead" placeholder="Lead name"></div>
+    </div>
+    <div class="form-group"><label>Notes</label><textarea id="manual-act-notes" placeholder="Activity details..." style="min-height:60px"></textarea></div>
+    <button class="btn-primary" onclick="logManualActivity()">📝 Log Activity</button>
+  </div>
+</div>

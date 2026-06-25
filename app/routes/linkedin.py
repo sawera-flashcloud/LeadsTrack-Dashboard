@@ -1,8 +1,10 @@
+import logging
 from datetime import datetime, timezone
 
 from flask import Blueprint, request, jsonify
 from app.services.supabase import supabase, select, select_one, insert, update, delete, eq, in_
 
+logger = logging.getLogger(__name__)
 linkedin_bp = Blueprint('linkedin', __name__)
 
 
@@ -186,13 +188,25 @@ def batch_delete_activities():
     if not ids:
         return jsonify({'error': 'No IDs provided'}), 400
 
-    # Delete activities matching IDs and workspace
-    for aid in ids:
-        act = select_one('linkedin_activities', filters=[eq('id', aid), eq('workspace_id', user['workspace_id'])])
-        if act:
-            delete('linkedin_activities', filters=[eq('id', aid)])
+    # Validate and coerce IDs to integers
+    try:
+        int_ids = [int(i) for i in ids]
+    except (ValueError, TypeError):
+        return jsonify({'error': 'Invalid ID format'}), 400
 
-    return jsonify({'success': True, 'deleted': len(ids)})
+    workspace_id = user['workspace_id']
+    try:
+        # Single IN query scoped to the user's workspace — no N+1 loop
+        supabase.table('linkedin_activities') \
+            .delete() \
+            .in_('id', int_ids) \
+            .eq('workspace_id', workspace_id) \
+            .execute()
+    except Exception as e:
+        logger.error(f"Batch delete failed: {e}")
+        return jsonify({'error': 'Delete failed', 'detail': str(e)}), 500
+
+    return jsonify({'success': True, 'deleted': len(int_ids)})
 
 
 @linkedin_bp.route('/api/linkedin/stats', methods=['GET'])

@@ -10,112 +10,122 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0b0f;
-  --surface: #12141a;
-  --card: #181b24;
-  --hover: #1e2230;
-  --border: #232738;
-  --text: #e8eaf0;
-  --text-sec: #8b90a5;
-  --text-muted: #5a5f78;
+  --bg: #080910;
+  --surface: #0f1117;
+  --card: #161922;
+  --hover: #1c2030;
+  --border: #1f2335;
+  --border-bright: #2d3350;
+  --text: #eceef5;
+  --text-sec: #8b91ab;
+  --text-muted: #52576e;
   --accent: #7c6dfa;
-  --accent-hover: #9588f5;
-  --accent-glow: rgba(124,109,250,0.15);
+  --accent-2: #5b8def;
+  --accent-hover: #9a8dfb;
+  --accent-glow: rgba(124,109,250,0.14);
+  --accent-glow-bright: rgba(124,109,250,0.22);
   --success: #3ecf8e;
+  --success-glow: rgba(62,207,142,0.12);
   --warning: #f5a623;
-  --danger: #f5485a;
-  --radius: 10px;
-  --radius-sm: 6px;
-  --radius-lg: 14px;
-  --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  --warning-glow: rgba(245,166,35,0.12);
+  --danger: #f04f60;
+  --danger-glow: rgba(240,79,96,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.25);
   --sidebar-w: 240px;
   --topbar-h: 64px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Sora',-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+body{font-family:'Sora',-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased}
 
 /* Login */
-#login-view{display:none;align-items:center;justify-content:center;min-height:100vh;background:var(--bg)}
-.login-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:48px 40px;width:420px;max-width:92vw;box-shadow:var(--shadow)}
-.login-card h1{font-size:26px;margin-bottom:4px;display:flex;align-items:center;gap:12px}
-.login-card .sub{color:var(--text-sec);font-size:14px;margin-bottom:28px}
-.login-card label{display:block;font-size:13px;color:var(--text-sec);margin-bottom:6px}
-.login-card input{width:100%;padding:12px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:14px;margin-bottom:16px;outline:none;transition:border-color .2s}
-.login-card input:focus{border-color:var(--accent)}
-.login-card .btn-primary{width:100%;padding:12px;font-size:15px;margin-top:8px}
-.login-error{display:none;padding:12px 16px;background:rgba(245,72,90,.1);border:1px solid rgba(245,72,90,.3);border-radius:var(--radius-sm);color:var(--danger);font-size:13px;margin-bottom:12px}
+#login-view{display:none;align-items:center;justify-content:center;min-height:100vh;background:var(--bg);background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(124,109,250,0.08),transparent)}
+.login-card{background:var(--surface);border:1px solid var(--border-bright);border-radius:var(--radius-lg);padding:52px 44px;width:430px;max-width:92vw;box-shadow:0 8px 40px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.03)}
+.login-card h1{font-size:26px;margin-bottom:4px;display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.3px}
+.login-card .sub{color:var(--text-muted);font-size:13px;margin-bottom:32px;letter-spacing:.2px}
+.login-card label{display:block;font-size:12px;font-weight:600;color:var(--text-sec);margin-bottom:6px;letter-spacing:.3px;text-transform:uppercase}
+.login-card input{width:100%;padding:12px 16px;background:var(--card);border:1px solid var(--border-bright);border-radius:var(--radius-sm);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;margin-bottom:18px;outline:none;transition:border-color .2s,box-shadow .2s}
+.login-card input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.login-card .btn-primary{width:100%;padding:13px;font-size:15px;margin-top:8px}
+.login-error{display:none;padding:12px 16px;background:var(--danger-glow);border:1px solid rgba(240,79,96,.3);border-radius:var(--radius-sm);color:var(--danger);font-size:13px;margin-bottom:12px}
 
-
-.btn-primary{background:var(--accent);border:none;color:#fff;padding:10px 22px;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s,transform .1s}
-.btn-primary:hover{background:var(--accent-hover)}
-.btn-primary:active{transform:scale(.97)}
-.btn-primary:disabled{opacity:.5;cursor:not-allowed}
-.btn-secondary{background:var(--card);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:background .2s}
-.btn-secondary:hover{background:var(--hover)}
-.btn-sm{padding:5px 12px;font-size:12px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:'Sora',sans-serif;font-weight:500;transition:opacity .2s}
-.btn-sm:hover{opacity:.8}
-.btn-danger{background:var(--danger);border:none;color:#fff;padding:6px 12px;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-weight:500;font-size:12px;cursor:pointer}
-.btn-danger:hover{opacity:.85}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#6b5cf0);border:none;color:#fff;padding:10px 22px;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(124,109,250,0.35)}
+.btn-primary:hover{background:linear-gradient(135deg,var(--accent-hover),#7c6dfa);box-shadow:0 6px 20px rgba(124,109,250,0.45);transform:translateY(-1px)}
+.btn-primary:active{transform:scale(.97);box-shadow:0 2px 8px rgba(124,109,250,0.3)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-secondary{background:var(--card);border:1px solid var(--border-bright);color:var(--text-sec);padding:8px 16px;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:all .2s}
+.btn-secondary:hover{background:var(--hover);border-color:var(--border-bright);color:var(--text)}
+.btn-sm{padding:5px 12px;font-size:12px;border-radius:var(--radius-sm);border:none;cursor:pointer;font-family:'Sora',sans-serif;font-weight:500;transition:all .2s}
+.btn-sm:hover{opacity:.85;transform:translateY(-1px)}
+.btn-danger{background:linear-gradient(135deg,var(--danger),#c83248);border:none;color:#fff;padding:6px 14px;border-radius:var(--radius-sm);font-family:'Sora',sans-serif;font-weight:600;font-size:12px;cursor:pointer;box-shadow:0 2px 8px rgba(240,79,96,0.3);transition:all .2s}
+.btn-danger:hover{box-shadow:0 4px 14px rgba(240,79,96,0.45);transform:translateY(-1px)}
 
 #app-view{display:block;min-height:100vh}
 
 /* Sidebar */
-.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100}
-.sidebar-brand{padding:20px 20px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
-.sidebar-brand .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:800}
-.sidebar-nav{flex:1;padding:8px 10px;overflow-y:auto}
-.nav-section{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;padding:12px 12px 6px;font-weight:600}
-.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-sm);cursor:pointer;color:var(--text-sec);font-size:13px;font-weight:500;transition:all .15s;margin-bottom:2px}
-.nav-item:hover{background:var(--hover);color:var(--text)}
-.nav-item.active{background:var(--accent-glow);color:var(--accent)}
-.nav-item .nav-icon{font-size:16px;width:22px;text-align:center}
-.sidebar-footer{padding:12px 16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)}
+.sidebar{width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;backdrop-filter:blur(12px)}
+.sidebar-brand{padding:20px 20px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;font-weight:700;font-size:17px;letter-spacing:-.2px}
+.sidebar-brand .logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--accent),#5b8def);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:800;box-shadow:0 4px 12px rgba(124,109,250,0.4)}
+.sidebar-nav{flex:1;padding:10px 10px;overflow-y:auto}
+.nav-section{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;padding:14px 12px 6px;font-weight:700}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--radius-sm);cursor:pointer;color:var(--text-muted);font-size:13px;font-weight:500;transition:all .15s;margin-bottom:2px;position:relative}
+.nav-item:hover{background:var(--hover);color:var(--text-sec)}
+.nav-item.active{background:var(--accent-glow-bright);color:var(--accent);font-weight:600}
+.nav-item.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:60%;background:var(--accent);border-radius:0 3px 3px 0;box-shadow:0 0 8px var(--accent)}
+.nav-item .nav-icon{font-size:15px;width:22px;text-align:center;flex-shrink:0}
+.sidebar-footer{padding:14px 16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted)}
 .sidebar-footer .logout-btn{background:none;border:none;color:var(--text-muted);cursor:pointer;font-family:'Sora',sans-serif;font-size:12px;padding:4px 0;display:block;margin-top:4px;transition:color .2s}
 .sidebar-footer .logout-btn:hover{color:var(--danger)}
 
 .main-area{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column}
-.topbar{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--border);background:var(--surface)}
-.topbar h2{font-size:18px;font-weight:600}
+.topbar{height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid var(--border);background:rgba(15,17,23,0.9);backdrop-filter:blur(12px);position:sticky;top:0;z-index:50}
+.topbar h2{font-size:18px;font-weight:700;letter-spacing:-.3px}
 .topbar .sub{font-size:12px;color:var(--text-muted);margin-top:2px}
-.content-area{flex:1;padding:24px 28px;overflow-y:auto}
+.content-area{flex:1;padding:28px 32px;overflow-y:auto}
 .tab-content{display:none}
 .tab-content.active{display:block}
 
 /* Cards */
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-bottom:24px}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-.stat-card .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.stat-card .stat-value{font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace}
-.stat-card .stat-change{font-size:12px;margin-top:4px}
+.stat-card{background:linear-gradient(160deg,var(--surface),var(--card));border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);transition:all .2s;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);pointer-events:none}
+.stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.45);border-color:var(--border-bright)}
+.stat-card .stat-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.stat-card .stat-value{font-size:30px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1.1;letter-spacing:-1px}
+.stat-card .stat-change{font-size:12px;margin-top:6px;font-weight:500}
 .stat-card .stat-change.up{color:var(--success)}
 .stat-card .stat-change.down{color:var(--danger)}
 
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
 
 /* Table */
 .table-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;overflow-x:auto}
 table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:12px 16px;font-size:13px}
-th{background:var(--card);color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:11px;border-bottom:1px solid var(--border)}
-td{border-bottom:1px solid var(--border);color:var(--text-sec)}
+th,td{text-align:left;padding:12px 18px;font-size:13px}
+th{background:var(--card);color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.7px;font-size:10.5px;border-bottom:1px solid var(--border)}
+td{border-bottom:1px solid var(--border);color:var(--text-sec);transition:background .12s}
+tr:hover td{background:rgba(124,109,250,0.04)}
 tr:last-child td{border-bottom:none}
 
-.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;font-family:'JetBrains Mono',monospace}
-.badge-high{background:rgba(62,207,142,.15);color:var(--success)}
-.badge-med{background:rgba(245,166,35,.15);color:var(--warning)}
-.badge-low{background:rgba(245,72,90,.15);color:var(--danger)}
-.badge-new{background:rgba(124,109,250,.15);color:var(--accent)}
-.badge-contacted{background:rgba(62,207,142,.15);color:var(--success)}
-.badge-qualified{background:rgba(245,166,35,.15);color:var(--warning)}
-.badge-follow-up{background:rgba(255,107,53,.15);color:#ff6b35}
-.badge-replied{background:rgba(0,184,212,.15);color:#00b8d4}
-.badge-not-to-contact{background:rgba(245,72,90,.25);color:var(--danger);text-decoration:line-through}
-.badge-interested{background:rgba(62,207,142,.15);color:var(--success)}
-.badge-linkedin{background:rgba(10,102,194,.15);color:#5b8def}
-.badge-referral{background:rgba(62,207,142,.15);color:var(--success)}
-.badge-web{background:rgba(124,109,250,.15);color:var(--accent)}
-.badge-email{background:rgba(245,166,35,.15);color:var(--warning)}
-.badge-manual{background:rgba(90,95,120,.15);color:var(--text-muted)}
+.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:10.5px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:.2px}
+.badge-high{background:var(--success-glow);color:var(--success);border:1px solid rgba(62,207,142,.2)}
+.badge-med{background:var(--warning-glow);color:var(--warning);border:1px solid rgba(245,166,35,.2)}
+.badge-low{background:var(--danger-glow);color:var(--danger);border:1px solid rgba(240,79,96,.2)}
+.badge-new{background:var(--accent-glow);color:var(--accent);border:1px solid rgba(124,109,250,.2)}
+.badge-contacted{background:var(--success-glow);color:var(--success);border:1px solid rgba(62,207,142,.2)}
+.badge-qualified{background:var(--warning-glow);color:var(--warning);border:1px solid rgba(245,166,35,.2)}
+.badge-follow-up{background:rgba(255,107,53,.1);color:#ff7b4d;border:1px solid rgba(255,107,53,.2)}
+.badge-replied{background:rgba(0,184,212,.1);color:#2ec8e0;border:1px solid rgba(0,184,212,.2)}
+.badge-not-to-contact{background:rgba(240,79,96,.12);color:var(--danger);text-decoration:line-through;border:1px solid rgba(240,79,96,.2)}
+.badge-interested{background:var(--success-glow);color:var(--success);border:1px solid rgba(62,207,142,.2)}
+.badge-linkedin{background:rgba(91,141,239,.1);color:#7aabf5;border:1px solid rgba(91,141,239,.2)}
+.badge-referral{background:var(--success-glow);color:var(--success);border:1px solid rgba(62,207,142,.2)}
+.badge-web{background:var(--accent-glow);color:var(--accent);border:1px solid rgba(124,109,250,.2)}
+.badge-email{background:var(--warning-glow);color:var(--warning);border:1px solid rgba(245,166,35,.2)}
+.badge-manual{background:rgba(82,87,110,.1);color:var(--text-sec);border:1px solid rgba(82,87,110,.2)}
 
 /* Score bar */
 .score-bar{display:flex;align-items:center;gap:8px}
@@ -149,10 +159,10 @@ tr:last-child td{border-bottom:none}
 .qlog-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
 
 /* Filters */
-.filter-bar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:center}
-.filter-bar input,.filter-bar select{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;outline:none}
+.filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;align-items:center}
+.filter-bar input,.filter-bar select{padding:8px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;outline:none;transition:border-color .2s,box-shadow .2s}
 .filter-bar input{flex:1;min-width:200px}
-.filter-bar input:focus,.filter-bar select:focus{border-color:var(--accent)}
+.filter-bar input:focus,.filter-bar select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
 .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:16px}
 .pagination button{background:var(--card);border:1px solid var(--border);color:var(--text-sec);padding:6px 12px;border-radius:var(--radius-sm);cursor:pointer;font-size:13px}
 .pagination button:hover{background:var(--hover)}
@@ -160,18 +170,18 @@ tr:last-child td{border-bottom:none}
 .pagination .page-info{font-size:13px;color:var(--text-muted)}
 
 /* Chat */
-.chat-container{display:flex;flex-direction:column;height:calc(100vh - 220px);min-height:500px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.chat-messages{flex:1;overflow-y:auto;padding:24px}
-.chat-msg{margin-bottom:20px;max-width:88%}
+.chat-container{display:flex;flex-direction:column;height:calc(100vh - 220px);min-height:500px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+.chat-messages{flex:1;overflow-y:auto;padding:28px 24px}
+.chat-msg{margin-bottom:22px;max-width:88%}
 .chat-msg.user{margin-left:auto}
 .chat-msg.ai{margin-right:auto}
-.chat-msg .bubble{padding:14px 18px;border-radius:14px;font-size:14px;line-height:1.7;white-space:pre-wrap;word-wrap:break-word}
-.chat-msg.user .bubble{background:var(--accent);color:#fff;border-bottom-right-radius:4px}
-.chat-msg.ai .bubble{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
-.chat-msg .sender{font-size:11px;color:var(--text-muted);margin-bottom:4px;font-family:'JetBrains Mono',monospace}
-.chat-input-area{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--border);background:var(--card)}
-.chat-input-area textarea{flex:1;padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;line-height:1.5;outline:none;resize:none;min-height:48px;max-height:120px}
-.chat-input-area textarea:focus{border-color:var(--accent)}
+.chat-msg .bubble{padding:14px 18px;border-radius:16px;font-size:14px;line-height:1.75;white-space:pre-wrap;word-wrap:break-word}
+.chat-msg.user .bubble{background:linear-gradient(135deg,var(--accent),#6b5cf0);color:#fff;border-bottom-right-radius:4px;box-shadow:0 4px 16px rgba(124,109,250,.35)}
+.chat-msg.ai .bubble{background:var(--card);border:1px solid var(--border-bright);border-bottom-left-radius:4px;box-shadow:var(--shadow-sm)}
+.chat-msg .sender{font-size:10.5px;color:var(--text-muted);margin-bottom:5px;font-family:'JetBrains Mono',monospace;letter-spacing:.3px}
+.chat-input-area{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--border);background:var(--card)}
+.chat-input-area textarea{flex:1;padding:12px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;line-height:1.5;outline:none;resize:none;min-height:48px;max-height:120px;transition:border-color .2s,box-shadow .2s}
+.chat-input-area textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
 .quick-prompts{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--border);flex-wrap:wrap}
 .quick-prompt{padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:20px;color:var(--text-sec);font-size:12px;cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif}
 .quick-prompt:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
@@ -207,15 +217,16 @@ tr:last-child td{border-bottom:none}
 .meeting-card{
   background:var(--card);
   border-radius:var(--radius-sm);
-  padding:11px 12px;
+  padding:13px 14px;
   border-left:3px solid var(--accent);
-  margin-bottom:7px;
-  transition:border-color .2s,background .15s;
+  margin-bottom:8px;
+  transition:all .2s;
+  box-shadow:var(--shadow-sm);
 }
-.meeting-card:hover{background:var(--hover)}
+.meeting-card:hover{background:var(--hover);transform:translateX(2px);box-shadow:0 4px 14px rgba(0,0,0,0.3)}
 .meeting-card:last-child{margin-bottom:0}
-.meeting-card .mc-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.3}
-.meeting-card .mc-meta{font-size:11px;color:var(--text-sec);display:flex;gap:10px;flex-wrap:wrap}
+.meeting-card .mc-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.3}
+.meeting-card .mc-meta{font-size:11px;color:var(--text-muted);display:flex;gap:10px;flex-wrap:wrap}
 .meeting-card .mc-meta span{white-space:nowrap}
 .meeting-card .mc-link{color:var(--accent);text-decoration:none}
 .meeting-card .mc-link:hover{text-decoration:underline}
@@ -227,11 +238,12 @@ tr:last-child td{border-bottom:none}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
 .grid-2-1{display:grid;grid-template-columns:2fr 1fr;gap:20px}
 .grid-1-2{display:grid;grid-template-columns:1fr 2fr;gap:20px}
-.grid-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.grid-card{background:linear-gradient(160deg,var(--surface),var(--card));border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);transition:border-color .2s}
+.grid-card:hover{border-color:var(--border-bright)}
 
 /* SDR Identity Bar */
-.sdr-bar{display:flex;align-items:center;gap:20px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px;box-shadow:var(--shadow)}
-.sdr-avatar{width:48px;height:48px;border-radius:50%;background:var(--accent-glow);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border:2px solid var(--accent);flex-shrink:0}
+.sdr-bar{display:flex;align-items:center;gap:20px;padding:18px 22px;background:linear-gradient(135deg,var(--surface),var(--card));border:1px solid var(--border-bright);border-radius:var(--radius);margin-bottom:24px;box-shadow:var(--shadow)}
+.sdr-avatar{width:48px;height:48px;border-radius:50%;background:var(--accent-glow-bright);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;border:2px solid var(--accent);flex-shrink:0;box-shadow:0 0 16px var(--accent-glow)}
 .sdr-info{flex:1}
 .sdr-info .name{font-size:16px;font-weight:600}
 .sdr-info .role{font-size:12px;color:var(--text-muted)}
@@ -269,14 +281,15 @@ tr:last-child td{border-bottom:none}
 .li-stat-card .lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
 
 /* Groq banner */
-.groq-banner{display:flex;align-items:center;gap:16px;padding:16px 20px;background:linear-gradient(135deg,rgba(124,109,250,.12),rgba(91,141,239,.08));border:1px solid rgba(124,109,250,.2);border-radius:var(--radius);margin-bottom:20px}
+.groq-banner{display:flex;align-items:center;gap:16px;padding:18px 22px;background:linear-gradient(135deg,rgba(124,109,250,.1),rgba(91,141,239,.06));border:1px solid rgba(124,109,250,.25);border-radius:var(--radius);margin-bottom:20px;box-shadow:0 0 30px rgba(124,109,250,0.06)}
 .groq-banner .groq-icon{font-size:32px}
 .groq-banner h3{font-size:16px;font-weight:600}
 .groq-banner .groq-sub{font-size:12px;color:var(--text-muted)}
 
 /* Integration cards */
-.integration-card{display:flex;align-items:center;gap:16px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow)}
-.integration-card .int-icon{width:44px;height:44px;border-radius:10px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.integration-card{display:flex;align-items:center;gap:16px;padding:18px;background:linear-gradient(160deg,var(--surface),var(--card));border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);transition:all .2s}
+.integration-card:hover{border-color:var(--border-bright);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.integration-card .int-icon{width:46px;height:46px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;border:1px solid var(--border)}
 .integration-card .int-info{flex:1}
 .integration-card .int-info h4{font-size:14px;font-weight:600}
 .integration-card .int-info p{font-size:12px;color:var(--text-muted)}
@@ -286,10 +299,10 @@ tr:last-child td{border-bottom:none}
 .sdr-activity .act-icon{font-size:18px;width:36px;height:36px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
 /* Form */
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:13px;color:var(--text-sec);margin-bottom:6px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent)}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:11.5px;font-weight:700;color:var(--text-muted);margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;outline:none;transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
 .form-group textarea{min-height:80px;resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
@@ -322,9 +335,9 @@ tr:last-child td{border-bottom:none}
 
 /* Admin */
 .health-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}
-.health-ok{background:var(--success);box-shadow:0 0 6px rgba(62,207,142,.4)}
-.health-warn{background:var(--warning);box-shadow:0 0 6px rgba(245,166,35,.4)}
-.health-fail{background:var(--danger);box-shadow:0 0 6px rgba(245,72,90,.4)}
+.health-ok{background:var(--success);box-shadow:0 0 10px rgba(62,207,142,.6)}
+.health-warn{background:var(--warning);box-shadow:0 0 10px rgba(245,166,35,.6)}
+.health-fail{background:var(--danger);box-shadow:0 0 10px rgba(240,79,96,.6)}
 .btn-period{background:var(--card);border:1px solid var(--border);color:var(--text-sec);cursor:pointer;font-size:12px;padding:6px 16px;border-radius:var(--radius-sm)}
 .btn-period.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .chart-bar-row{display:flex;align-items:flex-end;gap:4px;height:100px;padding:8px 0}
@@ -372,26 +385,28 @@ tr:last-child td{border-bottom:none}
 
 /* Timeframe filter pills */
 .timeframe-bar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.timeframe-pill{padding:8px 18px;background:var(--surface);border:1px solid var(--border);border-radius:24px;color:var(--text-sec);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Sora',sans-serif;letter-spacing:.3px}
+.timeframe-pill{padding:7px 18px;background:var(--card);border:1px solid var(--border);border-radius:24px;color:var(--text-muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Sora',sans-serif;letter-spacing:.3px}
 .timeframe-pill:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
-.timeframe-pill.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(124,109,250,.3)}
+.timeframe-pill.active{background:linear-gradient(135deg,var(--accent),#6b5cf0);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(124,109,250,.4)}
 
 /* Enhanced metric cards */
 .metric-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:24px}
-.metric-card{background:linear-gradient(135deg,var(--surface),var(--card));border:1px solid var(--border);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,.2)}
-.metric-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3);border-color:var(--accent)}
-.metric-card .metric-icon{font-size:22px;margin-bottom:8px}
-.metric-card .metric-value{font-size:26px;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1.2}
-.metric-card .metric-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
-.metric-card .metric-sub{font-size:11px;color:var(--text-sec);margin-top:2px}
-.metric-card .metric-glow{position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;opacity:.08;pointer-events:none}
+.metric-card{background:linear-gradient(160deg,var(--surface),var(--card));border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden;transition:all .2s;box-shadow:var(--shadow)}
+.metric-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius);border-top:1px solid rgba(255,255,255,0.05);pointer-events:none}
+.metric-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.4);border-color:var(--accent)}
+.metric-card .metric-icon{font-size:22px;margin-bottom:10px}
+.metric-card .metric-value{font-size:28px;font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1.1;letter-spacing:-1px}
+.metric-card .metric-label{font-size:10.5px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.7px;margin-top:5px}
+.metric-card .metric-sub{font-size:11px;color:var(--text-sec);margin-top:3px}
+.metric-card .metric-glow{position:absolute;top:-20px;right:-20px;width:90px;height:90px;border-radius:50%;opacity:.1;pointer-events:none}
 
 /* Enhanced dashboard grid */
 .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:18px;margin-bottom:24px}
-.dash-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.dash-card .dash-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.dash-card .dash-card-title{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
-.dash-card .dash-card-badge{font-size:10px;padding:3px 10px;border-radius:12px;font-weight:600;letter-spacing:.3px}
+.dash-card{background:linear-gradient(160deg,var(--surface),var(--card));border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;box-shadow:var(--shadow);transition:border-color .2s}
+.dash-card:hover{border-color:var(--border-bright)}
+.dash-card .dash-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.dash-card .dash-card-title{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.5px}
+.dash-card .dash-card-badge{font-size:10px;padding:3px 10px;border-radius:12px;font-weight:700;letter-spacing:.3px}
 
 /* Activity trend chart enhanced */
 .trend-chart{display:flex;align-items:flex-end;gap:3px;height:200px;padding:8px 0 0;position:relative}
@@ -418,11 +433,11 @@ tr:last-child td{border-bottom:none}
 .dump-item:last-child{border-bottom:none}
 .dump-item .dump-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)}
 
-.loading{display:flex;align-items:center;justify-content:center;padding:40px;color:var(--text-muted);font-size:14px;gap:8px}
-.spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
+.loading{display:flex;align-items:center;justify-content:center;padding:48px;color:var(--text-muted);font-size:14px;gap:10px}
+.spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .65s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-.section-title{font-size:16px;font-weight:600;margin-bottom:14px;margin-top:24px}
+.section-title{font-size:13px;font-weight:700;margin-bottom:14px;margin-top:28px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-sec)}
 .section-title:first-of-type{margin-top:0}
 .mb16{margin-bottom:16px}
 .mt16{margin-top:16px}
@@ -439,14 +454,16 @@ tr:last-child td{border-bottom:none}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
 @media(max-width:768px){
-  .sidebar{width:60px}
+  .sidebar{width:58px}
   .sidebar-brand span:not(.logo-icon),.nav-item span:not(.nav-icon),.sidebar-footer,.nav-section{display:none}
-  .main-area{margin-left:60px}
+  .main-area{margin-left:58px}
   .stat-grid{grid-template-columns:1fr 1fr}
-  .content-area{padding:16px}
+  .content-area{padding:16px 14px}
   .filter-bar{flex-direction:column}
   .filter-bar input{min-width:auto;width:100%}
   .grid-2,.grid-3,.grid-2-1,.grid-1-2{grid-template-columns:1fr}
+  .metric-grid{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -476,8 +493,7 @@ tr:last-child td{border-bottom:none}
   </div>
   <nav class="sidebar-nav">
     <div class="nav-section">Main</div>
-    <div class="nav-item active" onclick="showTab('dashboard')"><span class="nav-icon">📊</span><span>Dashboard</span></div>
-    <div class="nav-item" onclick="showTab('lead-hunter')"><span class="nav-icon">🎯</span><span>Lead Hunter</span></div>
+    <div class="nav-item active" onclick="showTab('lead-hunter')"><span class="nav-icon">🎯</span><span>Lead Hunter</span></div>
     <div class="nav-item" onclick="showTab('leads')"><span class="nav-icon">👥</span><span>Leads Database</span></div>
     <div class="nav-item" onclick="showTab('email-gen')"><span class="nav-icon">✉️</span><span>Email Generator</span></div>
     <div class="nav-item" onclick="showTab('linkedin-tracker')"><span class="nav-icon">🔗</span><span>LinkedIn Tracker</span></div>
@@ -487,11 +503,9 @@ tr:last-child td{border-bottom:none}
     <div class="nav-section">Intelligence</div>
     <div class="nav-item" onclick="showTab('meetings')"><span class="nav-icon">📅</span><span>Meetings</span></div>
     <div class="nav-item" onclick="showTab('ai-agent')"><span class="nav-icon">🤖</span><span>AI Agent</span></div>
-    <div class="nav-item" onclick="showTab('analytics')"><span class="nav-icon">📈</span><span>Analytics</span></div>
 
     <div class="nav-section">System</div>
     <div class="nav-item" onclick="showTab('integrations')"><span class="nav-icon">🔌</span><span>Integrations</span></div>
-    <div class="nav-item" onclick="showTab('api-config')"><span class="nav-icon">⚙️</span><span>API Config</span></div>
     <div class="nav-item" onclick="showTab('admin')"><span class="nav-icon">🛡️</span><span>Admin</span></div>
   </nav>
   <div class="sidebar-footer">
@@ -503,9 +517,9 @@ tr:last-child td{border-bottom:none}
 <div class="main-area">
 <header class="topbar">
   <div>
-    <h2 id="page-title">Dashboard</h2>
+    <h2 id="page-title">Lead Hunter</h2>
     <div class="flex gap8 items-center">
-      <div class="sub" id="page-sub">Sales Command Center · AI-Powered SDR Operating System</div>
+      <div class="sub" id="page-sub">Discover & enrich prospects</div>
       <div class="last-refresh" id="refresh-indicator"><span class="refresh-dot"></span> <span id="refresh-text">auto-updating</span></div>
     </div>
   </div>
@@ -516,613 +530,28 @@ tr:last-child td{border-bottom:none}
 </header>
 
 <div class="content-area">
-
-<!-- DASHBOARD — Redesigned with timeframe filters + enhanced UX -->
-<div class="tab-content active" id="tab-dashboard">
-
-  <!-- ═══ TIMEFRAME FILTER ═══ -->
-  <div class="timeframe-bar" id="timeframe-bar">
-    <button class="timeframe-pill active" data-days="7" onclick="switchTimeframe(7)">1 Week</button>
-    <button class="timeframe-pill" data-days="30" onclick="switchTimeframe(30)">1 Month</button>
-    <button class="timeframe-pill" data-days="90" onclick="switchTimeframe(90)">3 Months</button>
-    <button class="timeframe-pill" data-days="180" onclick="switchTimeframe(180)">6 Months</button>
-    <button class="timeframe-pill" data-days="all" onclick="switchTimeframe('all')">All Time</button>
-  </div>
-
-  <!-- ═══ METRIC CARDS (updates with timeframe) ═══ -->
-  <div class="metric-grid" id="dash-metrics">
-    <div class="metric-card"><div class="metric-icon">📧</div><div class="metric-value" style="color:var(--accent)">—</div><div class="metric-label">Emails Sent</div><div class="metric-sub" id="metric-sub-emails">past period</div><div class="metric-glow" style="background:var(--accent)"></div></div>
-    <div class="metric-card"><div class="metric-icon">📅</div><div class="metric-value" style="color:var(--success)">—</div><div class="metric-label">Meetings Booked</div><div class="metric-sub" id="metric-sub-meetings">past period</div><div class="metric-glow" style="background:var(--success)"></div></div>
-    <div class="metric-card"><div class="metric-icon">🔗</div><div class="metric-value" style="color:#5b8def">—</div><div class="metric-label">Connections Sent</div><div class="metric-sub" id="metric-sub-connections">LinkedIn</div><div class="metric-glow" style="background:#5b8def"></div></div>
-    <div class="metric-card"><div class="metric-icon">💬</div><div class="metric-value" style="color:var(--warning)">—</div><div class="metric-label">Replies</div><div class="metric-sub" id="metric-sub-replies">total received</div><div class="metric-glow" style="background:var(--warning)"></div></div>
-    <div class="metric-card"><div class="metric-icon">🎯</div><div class="metric-value" style="color:#c44dff">—</div><div class="metric-label">New Leads</div><div class="metric-sub" id="metric-sub-leads">created</div><div class="metric-glow" style="background:#c44dff"></div></div>
-    <div class="metric-card"><div class="metric-icon">✨</div><div class="metric-value" style="color:#f5a623">—</div><div class="metric-label">Enrichment Rate</div><div class="metric-sub" id="metric-sub-enrichment">% enriched</div><div class="metric-glow" style="background:#f5a623"></div></div>
-  </div>
-
-  <!-- ═══ TOP ROW: SDR Identity + Quick Stats ═══ -->
-  <div class="sdr-bar" id="sdr-bar" style="margin-bottom:20px">
-    <div class="sdr-avatar">?</div>
-    <div class="sdr-info">
-      <div class="name">Loading...</div>
-      <div class="role">SDR · Loading...</div>
-    </div>
-    <div class="sdr-metrics">
-      <div><div class="val" style="color:var(--accent)"><span class="spinner"></span></div><div class="lbl">🔥 Day Streak</div></div>
-      <div><div class="val" style="color:var(--success)"><span class="spinner"></span></div><div class="lbl">🏆 Rank</div></div>
-      <div><div class="val" style="color:var(--warning)"><span class="spinner"></span></div><div class="lbl">📈 Leads Gen.</div></div>
-    </div>
-  </div>
-
-  <!-- ═══ ROW 1: KPI Cards (8 big metric cards) ═══ -->
-  <div class="stat-grid" id="dash-stats" style="margin-bottom:20px">
-    <div class="loading" style="grid-column:1/-1"><span class="spinner"></span> Loading dashboard data...</div>
-  </div>
-
-  <!-- ═══ ROW 2: Three-pillar — Pipeline + Weekly Activity + Meetings Today ═══ -->
-  <div class="grid-3 mb16">
-    <div class="chart-container">
-      <div class="chart-title" style="display:flex;justify-content:space-between;align-items:center">
-        <span>🔻 Pipeline Funnel</span>
-        <span id="funnel-total" style="font-size:11px;color:var(--text-muted)"></span>
-      </div>
-      <div class="funnel-chart" id="dash-funnel"></div>
-      <div id="funnel-stats" style="font-size:11px;color:var(--text-muted);margin-top:6px;text-align:center"></div>
-    </div>
-    <div class="chart-container">
-      <div class="chart-title" style="display:flex;justify-content:space-between;align-items:center">
-        <span>📊 Activity Trend</span>
-        <span style="font-size:11px;color:var(--text-muted);font-weight:400" id="trend-period-label">7 days</span>
-      </div>
-      <div class="trend-chart" id="dash-trend-chart"></div>
-      <div class="chart-legend" id="dash-trend-legend"></div>
-    </div>
-    <div class="chart-container" style="display:flex;flex-direction:column;overflow:hidden;max-height:340px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
-        <span>📅 Upcoming Meetings <span style="font-weight:400;font-size:11px;color:var(--text-muted)">— Google</span></span>
-        <span id="mtg-week-count" style="font-size:10px;padding:2px 8px;background:var(--accent-glow);color:var(--accent);border-radius:20px">0</span>
-      </div>
-      <div id="dash-maton-meetings" class="scrollable-meetings" style="flex:1;min-height:0;margin-top:8px">
-        <div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">Loading meetings...</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ ROW 4: Two columns — Work Queue + AI Recs side by side ═══ -->
-  <div class="grid-2 mb16">
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div class="section-title" style="margin:0 0 12px">🎯 Today's Work Queue</div>
-      <div id="dash-targets" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
-      <!-- Quick action buttons -->
-      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
-        <button class="btn-sm" onclick="showTab('leads')" style="background:var(--accent-glow);color:var(--accent);flex:1">👥 View Leads</button>
-        <button class="btn-sm" onclick="showTab('email-gen')" style="background:var(--accent-glow);color:var(--accent);flex:1">✉️ Send Emails</button>
-        <button class="btn-sm" onclick="showTab('linkedin-tracker')" style="background:var(--accent-glow);color:var(--accent);flex:1">🔗 LinkedIn</button>
-      </div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <div class="section-title" style="margin:0">🤖 AI Recommended Actions</div>
-        <span style="font-size:10px;color:var(--text-muted)">Groq LPU</span>
-      </div>
-      <div id="ai-rec-list"></div>
-    </div>
-  </div>
-
-  <!-- ═══ ROW 5: Condensed Bottom Row ═══ -->
-  <div class="grid-3 mb16">
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <div class="section-title" style="margin:0">🏢 HubSpot Pipeline</div>
-        <span id="hs-pulse" style="width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block"></span>
-      </div>
-      <div id="dash-hubspot-summary" style="font-size:13px;color:var(--text-sec)">Loading...</div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div class="section-title" style="margin:0 0 8px">📊 Outreach Breakdown</div>
-      <div id="dash-outreach-bars" style="margin-top:8px"></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div class="section-title" style="margin:0 0 8px">🕐 Activity Timeline</div>
-      <div class="timeline" style="max-height:200px;overflow-y:auto;padding-right:6px" id="dash-timeline"></div>
-    </div>
-  </div>
-
-  <!-- ═══ ROW 6: Source Performance + Activity Feed + Follow-ups ═══ -->
-  <div class="grid-3 mb16">
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div class="section-title" style="margin:0 0 8px">📈 Lead Source Performance</div>
-      <div id="dash-sources" style="margin-top:8px"></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div class="section-title" style="margin:0 0 8px">🔗 LinkedIn & Email Feed</div>
-      <div id="dash-li-feed"></div>
-    </div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
-      <div class="section-title" style="margin:0 0 8px">⏰ Follow-ups Due</div>
-      <div id="dash-followups"></div>
-    </div>
-  </div>
-</div>
-
-<!-- LEAD HUNTER -->
-<div class="tab-content" id="tab-lead-hunter">
-  <div class="section-title">Select Data Sources</div>
-  <div class="source-grid mb16" id="source-grid">
-    <div class="source-item" data-source="google-maps" onclick="toggleSource(this)"><div class="si-icon">🗺️</div><div class="si-name">Google Maps</div><div class="si-desc">Local business data</div></div>
-    <div class="source-item" data-source="apollo" onclick="toggleSource(this)"><div class="si-icon">🚀</div><div class="si-name">Apollo.io</div><div class="si-desc">B2B contact DB</div></div>
-    <div class="source-item" data-source="hunter" onclick="toggleSource(this)"><div class="si-icon">📧</div><div class="si-name">Hunter.io</div><div class="si-desc">Email finder</div></div>
-    <div class="source-item" data-source="linkedin" onclick="toggleSource(this)"><div class="si-icon">🔗</div><div class="si-name">LinkedIn</div><div class="si-desc">Professional network</div></div>
-    <div class="source-item" data-source="firecrawl" onclick="toggleSource(this)"><div class="si-icon">🔥</div><div class="si-name">Firecrawl</div><div class="si-desc">Web scraping</div></div>
-    <div class="source-item" data-source="serper" onclick="toggleSource(this)"><div class="si-icon">🔍</div><div class="si-name">Serper.dev</div><div class="si-desc">Google search API</div></div>
-  </div>
-
-  <div class="section-title">ICP Filters</div>
-  <div class="card mb16">
-    <div class="form-row">
-      <div class="form-group"><label>Industry</label><input id="icp-industry" placeholder="e.g. SaaS, Fintech, Healthcare" value="SaaS"></div>
-      <div class="form-group"><label>Location</label><input id="icp-location" placeholder="e.g. San Francisco, Remote" value="San Francisco"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Company Size</label><input id="icp-size" placeholder="e.g. 10-50, 51-200" value="10-200"></div>
-      <div class="form-group"><label>Job Title</label><input id="icp-title" placeholder="e.g. VP Sales, CRO" value="VP Sales"></div>
-    </div>
-    <div class="form-group"><label>Keywords</label><input id="icp-keywords" placeholder="e.g. AI, CRM, enterprise"></div>
-  </div>
-
-  <div class="flex gap12 items-center mb16">
-    <button class="btn-primary" onclick="runHunt()">🚀 Run Hunt</button>
-    <span id="hunt-status" style="font-size:13px;color:var(--text-muted)"></span>
-  </div>
-
-  <div class="grid-2">
-    <div class="grid-card">
-      <div class="section-title">Score Distribution</div>
-      <div id="score-dist"></div>
-    </div>
-    <div class="grid-card">
-      <div class="section-title">Recent Hunts</div>
-      <div id="recent-hunts" style="font-size:13px;color:var(--text-muted)">No hunts yet. Configure sources and run your first hunt.</div>
-          <div id="hunt-results" style="display:none;margin-top:16px">
-            <div style="font-size:13px;color:var(--text-sec);margin-bottom:8px">Last Hunt Results:</div>
-            <div style="max-height:400px;overflow-y:auto" id="hunt-results-list"></div>
-          </div>
-    </div>
-  </div>
-</div>
-
-<!-- LEADS -->
-<div class="tab-content" id="tab-leads">
-  <div class="filter-bar">
-    <input type="text" id="leads-search" placeholder="Search by name, company, or title..." oninput="loadLeads()">
-    <select id="leads-source" onchange="loadLeads()">
-      <option value="">All Sources</option>
-      <option value="linkedin">LinkedIn</option>
-      <option value="referral">Referral</option>
-      <option value="web">Web</option>
-      <option value="email">Email</option>
-      <option value="manual">Manual</option>
-      <option value="google_maps">Google Maps</option>
-      <option value="apollo">Apollo.io</option>
-      <option value="hunter">Hunter.io</option>
-    </select>
-    <select id="leads-status" onchange="loadLeads()">
-      <option value="">All Status</option>
-      <option value="new">🆕 New</option>
-      <option value="contacted">📞 Contacted</option>
-      <option value="replied">💬 Replied</option>
-      <option value="interested">🎯 Interested</option>
-      <option value="qualified">⭐ Qualified</option>
-      <option value="follow_up">🔁 Follow Up</option>
-      <option value="meeting">📅 Meeting</option>
-      <option value="closed">✅ Closed</option>
-      <option value="not_to_contact">🚫 Not to Contact</option>
-    </select>
-    <button class="btn-danger btn-sm" id="batch-delete-btn" style="display:none;margin-left:auto" onclick="batchDeleteLeads()">Delete Selected</button>
-  </div>
-  <div class="table-container" id="leads-table"></div>
-  <div class="pagination" id="leads-pagination"></div>
-</div>
-
-<!-- EMAIL GENERATOR -->
-<div class="tab-content" id="tab-email-gen">
-  <div class="grid-2">
-    <div class="grid-card">
-      <div class="section-title">Lead Context</div>
-      <div class="form-group"><label>Name</label><input id="eg-name" placeholder="Lead name"></div>
-      <div class="form-group"><label>Company</label><input id="eg-company" placeholder="Company name"></div>
-      <div class="form-group"><label>Title</label><input id="eg-title" placeholder="Job title"></div>
-      <div class="form-group"><label>Industry</label><input id="eg-industry" placeholder="e.g. SaaS, Fintech"></div>
-      <div class="form-group"><label>Pain Points</label><textarea id="eg-pain" placeholder="Describe their pain points or context..."></textarea></div>
-      <div class="form-group"><label>Email Type</label>
-        <div class="toggle" id="eg-type-toggle">
-          <button class="active" onclick="setEmailType('cold',this)">Cold Email</button>
-          <button onclick="setEmailType('followup',this)">Follow Up</button>
-          <button onclick="setEmailType('linkedin-dm',this)">LinkedIn DM</button>
-          <button onclick="setEmailType('sequence',this)">Sequence</button>
-        </div>
-      </div>
-      <button class="btn-primary" onclick="generateEmail()">✨ Generate Email</button>
-    </div>
-    <div class="grid-card">
-      <div class="section-title">Generated Output</div>
-      <div id="eg-subject" style="font-size:13px;color:var(--text-muted);margin-bottom:8px;font-family:'JetBrains Mono',monospace"></div>
-      <div class="gen-output" id="eg-output">Fill in lead context and click generate...</div>
-      <div class="flex gap8 mt16">
-        <button class="btn-secondary" onclick="copyEmail()">📋 Copy</button>
-        <button class="btn-secondary" onclick="generateEmail()">🔄 Regenerate</button>
-        <button class="btn-primary" onclick="sendEmailFromGen()">📤 Send</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- AI AGENT -->
-<div class="tab-content" id="tab-ai-agent">
-  <div class="groq-banner">
-    <div class="groq-icon">⚡</div>
-    <div>
-      <h3>Groq AI Agent</h3>
-      <div class="groq-sub">Llama 3 70B · LPU Inference Engine · Ultra-low latency</div>
-    </div>
-  </div>
-
-  <div style="display:flex;gap:10px;margin-bottom:12px">
-    <button class="btn-sm" onclick="showTab('linkedin-tracker')" style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border);color:var(--text-prim);cursor:pointer;border-radius:8px;font-size:13px;font-weight:600">
-      🔗 LinkedIn Tracker
-    </button>
-    <button class="btn-sm" onclick="showTab('email-generator')" style="flex:1;padding:10px;background:var(--card);border:1px solid var(--border);color:var(--text-prim);cursor:pointer;border-radius:8px;font-size:13px;font-weight:600">
-      ✉️ Email Generator
-    </button>
-  </div>
-
-  <div>
-    <div class="section-title">Chat with AI Agent</div>
-    <div class="chat-container">
-      <div class="chat-messages" id="chat-messages">
-        <div class="chat-msg ai">
-          <div class="sender">AI Agent</div>
-          <div class="bubble">Hi! I'm your Lead Hunter AI powered by Groq. Ask me to research leads, draft outreach, or analyze pipeline.</div>
-        </div>
-      </div>
-      <div class="quick-prompts">
-        <span class="quick-prompt" onclick="sendQuickPrompt('Find me 5 SaaS companies in SF that need email marketing')">Find 5 SaaS leads</span>
-        <span class="quick-prompt" onclick="sendQuickPrompt('Draft a cold LinkedIn message for a VP of Sales')">Draft LI message</span>
-        <span class="quick-prompt" onclick="sendQuickPrompt('Analyze my pipeline performance')">Analyze pipeline</span>
-        <span class="quick-prompt" onclick="sendQuickPrompt('Summarize best SDR outreach strategies')">SDR strategies</span>
-        <span class="quick-prompt" onclick="fillLinkedInGmailPrompt()">📧 LinkedIn Email Activity</span>
-        <span class="quick-prompt" onclick="fillLinkedInNetworkingPrompt()">🔗 LinkedIn Networking</span>
-      </div>
-      <div class="chat-input-area">
-        <textarea id="chat-input" placeholder="Ask the AI agent... (Shift+Enter for new line, Enter to send)" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMessage()}"></textarea>
-        <button class="btn-primary" onclick="sendChatMessage()" style="align-self:flex-end">Send</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- LINKEDIN TRACKER -->
-<div class="tab-content" id="tab-linkedin-tracker">
-  <div class="li-stats" id="li-stats"></div>
-
-  <div class="grid-2 mb16">
-    <div class="grid-card">
-      <div class="section-title">Smart Activity Dump</div>
-      <textarea id="li-smart-dump" placeholder="Paste raw LinkedIn activity text here..." style="width:100%;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-family:'Sora',sans-serif;font-size:13px;min-height:120px;resize:vertical;outline:none"></textarea>
-      <button class="btn-primary mt16" onclick="parseSmartDump()">🤖 Parse Dump with Groq</button>
-    </div>
-    <div class="grid-card">
-      <div class="section-title">Quick Activity Log</div>
-      <div class="flex gap8 flex-wrap mb16">
-        <button class="qlog-btn" onclick="logLiActivity('connection_request')">➕ Connection</button>
-        <button class="qlog-btn" onclick="logLiActivity('message')">💬 Message</button>
-        <button class="qlog-btn" onclick="logLiActivity('profile_view')">👤 Profile View</button>
-        <button class="qlog-btn" onclick="logLiActivity('connection_accepted')">✅ Accepted</button>
-        <button class="qlog-btn" onclick="logLiActivity('reply_received')">📥 Reply</button>
-        <button class="qlog-btn" onclick="logLiActivity('meeting_booked')">📅 Meeting</button>
-        <button class="qlog-btn" onclick="logLiActivity('note')">📝 Note</button>
-        <button class="qlog-btn" onclick="logLiActivity('follow_up')">🔄 Follow-up</button>
-      </div>
-      <div class="form-row" style="margin-top:8px">
-        <div class="form-group"><label>Lead Name</label><input id="quick-li-name" placeholder="Name"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Title</label><input id="quick-li-title" placeholder="Job title"></div>
-        <div class="form-group"><label>Company</label><input id="quick-li-company" placeholder="Company"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group" style="flex:2"><label>LinkedIn Link</label><input id="quick-li-link" placeholder="https://linkedin.com/in/..."></div>
-      </div>
-      <button class="btn-sm btn-secondary" onclick="logQuickCustom()">Log Activity</button>
-    </div>
-  </div>
-
-  <div class="section-title">Activity Feed</div>
-  <div class="flex gap8 flex-wrap mb16">
-    <select id="li-feed-filter" onchange="loadLinkedInTracker()" style="padding:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:12px;outline:none">
-      <option value="">All Types</option>
-      <option value="connection_request">Connection Requests</option>
-      <option value="message">Messages</option>
-      <option value="profile_view">Profile Views</option>
-      <option value="connection_accepted">Accepted</option>
-      <option value="reply_received">Replies</option>
-      <option value="meeting_booked">Meetings</option>
-    </select>
-  </div>
-  <div class="activity-feed" id="li-feed"></div>
-
-  <div class="grid-2 mt16">
-    <div class="grid-card">
-      <div class="section-title">LinkedIn Performance</div>
-      <div id="li-performance"></div>
-    </div>
-    <div class="grid-card">
-      <div class="section-title">Follow-ups Due</div>
-      <div id="li-followups"></div>
-    </div>
-  </div>
-</div>
-
-<!-- HUBSPOT PIPELINE -->
-<div class="tab-content" id="tab-hubspot">
-  <div class="flex align-center gap8 mb16">
-    <div class="section-title" style="margin-bottom:0">📊 Kathy Roggers — Deals</div>
-    <span id="hs-status" style="font-size:12px;padding:4px 10px;border-radius:20px;background:rgba(124,109,250,.12);color:var(--accent)">checking...</span>
-    <button class="btn-sm ml-auto" onclick="loadHubSpot()">🔄 Refresh</button>
-  </div>
-  <div class="grid-4 mb16" id="hs-stat-cards">
-    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-open-deals">—</div><div style="font-size:12px;color:var(--text-muted)">Open Deals</div></div>
-    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-owners">—</div><div style="font-size:12px;color:var(--text-muted)">Active Owners</div></div>
-    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-value">—</div><div style="font-size:12px;color:var(--text-muted)">Pipeline Value</div></div>
-    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-avg">—</div><div style="font-size:12px;color:var(--text-muted)">Avg Deal Size</div></div>
-  </div>
-  <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-    <select id="hs-sort" class="input" style="width:auto" onchange="hsRender()">
-      <option value="deals">Sort by deals</option>
-      <option value="value">Sort by value</option>
-      <option value="name">Sort by name</option>
-    </select>
-  </div>
-  <div id="hs-loading" style="text-align:center;padding:40px;color:var(--text-muted)"><span class="spinner"></span> Loading HubSpot data...</div>
-  <div id="hs-error" style="display:none;text-align:center;padding:40px;color:var(--danger)"></div>
-  <div id="hs-grid" style="display:none"></div>
-</div>
-
-<!-- MATON MEETINGS -->
-<div class="tab-content" id="tab-meetings">
-  <div class="flex align-center gap8 mb16">
-    <div class="section-title" style="margin-bottom:0">📅 Meetings</div>
-    <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(124,109,250,.12);color:var(--accent)">Google Calendar</span>
-    <button class="btn-sm ml-auto" onclick="loadMeetings()">🔄 Refresh</button>
-  </div>
-
-  <!-- Summary row -->
-  <div class="grid-4 mb16" id="mtg-summary">
-    <div class="grid-card"><div style="font-size:24px;font-weight:700;color:var(--success)" id="mtg-upcoming">—</div><div style="font-size:11px;color:var(--text-muted)">Upcoming</div></div>
-    <div class="grid-card"><div style="font-size:24px;font-weight:700;color:var(--accent)" id="mtg-today">—</div><div style="font-size:11px;color:var(--text-muted)">Today</div></div>
-    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="mtg-past">—</div><div style="font-size:11px;color:var(--text-muted)">This Week</div></div>
-    <div class="grid-card"><div style="font-size:24px;font-weight:700;color:var(--warning)" id="mtg-attendees">—</div><div style="font-size:11px;color:var(--text-muted)">People</div></div>
-  </div>
-
-  <!-- Schedule list -->
-  <div id="mtg-list" class="scrollable-meetings" style="max-height:65vh;overflow-y:auto">
-    <div style="text-align:center;padding:40px;color:var(--text-muted)"><span class="spinner"></span> Loading meetings...</div>
-  </div>
-</div>
-
-<!-- ANALYTICS -->
-<div class="tab-content" id="tab-analytics">
-  <div class="stat-grid" id="analytics-stats"></div>
-
-  <div class="section-title">Pipeline Funnel</div>
-  <div class="card mb16">
-    <div class="pipeline-chart" id="pipeline-chart"></div>
-  </div>
-
-  <div class="section-title">Performance by Source</div>
-  <div class="table-container">
-    <table>
-      <thead><tr><th>Source</th><th>Leads</th><th>Contacted</th><th>Conversion</th><th>Share</th></tr></thead>
-      <tbody id="by-source-body"></tbody>
-    </table>
-  </div>
-</div>
-
-<!-- SDR ACTIVITY -->
-<div class="tab-content" id="tab-activity">
-  <!-- Period Tabs -->
-  <div class="period-tabs" style="display:flex;gap:8px;margin-bottom:16px">
-    <button class="btn-sm btn-period active" onclick="loadActivity('daily')" id="period-daily">📅 Daily</button>
-    <button class="btn-sm btn-period" onclick="loadActivity('weekly')" id="period-weekly">📆 Weekly</button>
-    <button class="btn-sm btn-period" onclick="loadActivity('monthly')" id="period-monthly">🗓️ Monthly</button>
-  </div>
-
-  <!-- Metrics Cards -->
-  <div class="stat-grid" id="activity-metrics">
-    <div class="stat-card"><div class="stat-label">Emails Sent</div><div class="stat-value" id="act-emails_sent" style="color:var(--accent)">—</div></div>
-    <div class="stat-card"><div class="stat-label">Connections Sent</div><div class="stat-value" id="act-connections_sent" style="color:#5b8def">—</div></div>
-    <div class="stat-card"><div class="stat-label">Replies</div><div class="stat-value" id="act-replies" style="color:var(--warning)">—</div></div>
-    <div class="stat-card"><div class="stat-label">Meetings</div><div class="stat-value" id="act-meetings" style="color:var(--success)">—</div></div>
-    <div class="stat-card"><div class="stat-label">Positive Replies</div><div class="stat-value" id="act-positive_replies" style="color:var(--danger)">—</div></div>
-  </div>
-
-  <!-- Charts -->
-  <div class="grid-2">
-    <div class="grid-card">
-      <div class="section-title">Daily Trend</div>
-      <div id="act-chart-daily" style="min-height:160px;padding:12px"></div>
-    </div>
-    <div class="grid-card">
-      <div class="section-title">Weekly Trend</div>
-      <div id="act-chart-weekly" style="min-height:160px;padding:12px"></div>
-    </div>
-  </div>
-
-  <!-- Manual Activity Log (kept from original) -->
-  <div class="card mt16">
-    <div class="section-title">Manual Activity Log</div>
-    <div class="form-row">
-      <div class="form-group"><label>Activity Type</label>
-        <select id="manual-act-type">
-          <option value="email_sent">Email Sent</option>
-          <option value="call">Call</option>
-          <option value="meeting">Meeting</option>
-          <option value="linkedin">LinkedIn Activity</option>
-          <option value="research">Research</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Lead Name</label><input id="manual-act-lead" placeholder="Lead name"></div>
-    </div>
-    <div class="form-group"><label>Notes</label><textarea id="manual-act-notes" placeholder="Activity details..." style="min-height:60px"></textarea></div>
-    <button class="btn-primary" onclick="logManualActivity()">📝 Log Activity</button>
-  </div>
-</div>
-
-<!-- INTEGRATIONS -->
-<div class="tab-content" id="tab-integrations">
-  <div class="section-title">Connected Services</div>
-  <div id="integrations-list">
-    <div class="integration-card">
-      <div class="int-icon">📧</div>
-      <div class="int-info"><h4>Gmail</h4><p>Send and track emails</p></div>
-      <span class="int-status" style="background:rgba(62,207,142,.15);color:var(--success)">Connected</span>
-      <span style="font-size:11px;color:var(--text-muted);display:block;margin-top:4px;">sawerakhadium557@gmail.com</span>
-      <div style="margin-top:8px;" id="gmail-preview"><span class="spinner"></span> Loading emails...</div>
-      <script>
-      setTimeout(function() {
-      if (typeof gmailLoaded === 'undefined') { gmailLoaded = true;
-        api('/api/gmail/emails?limit=3').then(function(d) {
-          if (!d || !d.emails) return;
-          var h = '<div style="font-size:12px;font-weight:600;margin:6px 0 4px">📬 Recent Emails</div>';
-          d.emails.forEach(function(e) {
-            h += '<div style="font-size:11px;padding:4px 0;border-bottom:1px solid var(--border)">';
-            h += '<b>' + e.from.split('<')[0].trim() + '</b>: ' + e.subject;
-            h += '<div style="color:var(--text-muted);font-size:10px">' + e.date + '</div></div>';
-          });
-          document.getElementById('gmail-preview').innerHTML = h;
-        }).catch(function() {
-          document.getElementById('gmail-preview').innerHTML = '';
-        });
-      }
-      });
-      </script>
-    </div>
-    <div class="integration-card">
-      <div class="int-icon">📧</div>
-      <div class="int-info"><h4>Gmail</h4><p>Send and track emails</p></div>
-      <span class="int-status" style="background:rgba(62,207,142,.15);color:var(--success)">Connected</span>
-    </div>
-    <div class="integration-card">
-      <div class="int-icon">📅</div>
-      <div class="int-info"><h4>Calendar</h4><p>Meeting scheduling</p></div>
-      <span class="int-status" style="background:rgba(62,207,142,.15);color:var(--success)">Connected</span>
-    </div>
-    <div class="integration-card">
-      <div class="int-icon">📈</div>
-      <div class="int-info"><h4>HubSpot</h4><p>CRM sync</p></div>
-      <span class="int-status" style="background:rgba(245,166,35,.15);color:var(--warning)">Pending</span>
-    </div>
-    <div class="integration-card">
-      <div class="int-icon">🚀</div>
-      <div class="int-info"><h4>Apollo.io</h4><p>B2B lead data</p></div>
-      <span class="int-status" style="background:rgba(62,207,142,.15);color:var(--success)">Connected</span>
-    </div>
-    <div class="integration-card">
-      <div class="int-icon">📧</div>
-      <div class="int-info"><h4>Hunter.io</h4><p>Email verification</p></div>
-      <span class="int-status" style="background:rgba(62,207,142,.15);color:var(--success)">Connected</span>
-    </div>
-    <div class="integration-card">
-      <div class="int-icon">🔥</div>
-      <div class="int-info"><h4>Firecrawl</h4><p>Web scraping</p></div>
-      <span class="int-status" style="background:rgba(245,166,35,.15);color:var(--warning)">Configured</span>
-    </div>
-  </div>
-</div>
-
-<!-- API CONFIG -->
-<div class="tab-content" id="tab-api-config">
-  <div class="section-title">Backend Connection</div>
-  <div class="api-config-area">
-    <label>API Base URL</label>
-    <div class="config-value" id="api-url-display"></div>
-    <label>Auth Token</label>
-    <div class="token-row">
-      <code id="token-display">......</code>
-      <button class="btn-secondary" onclick="copyToken()">📋 Copy</button>
-    </div>
-    <div style="margin-top:16px;">
-      <label>Connection Status</label>
-      <div class="flex gap12 items-center">
-        <button class="btn-primary" onclick="testConnection()">Test Connection</button>
-        <span id="test-result" style="font-size:13px;"></span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN -->
-<div class="tab-content" id="tab-admin">
-  <div class="section-title">SDR Team Performance</div>
-  <div class="table-container mb16">
-    <table>
-      <thead><tr><th>SDR</th><th>Leads Found</th><th>Emails Sent</th><th>Meetings</th><th>Conversion</th><th>Activity</th></tr></thead>
-      <tbody id="admin-sdr-body">
-        <tr><td style="color:var(--text)">Sarah Johnson</td><td>342</td><td>1,287</td><td>31</td><td><span class="badge badge-high">9.1%</span></td><td><span class="health-dot health-ok"></span>Active</td></tr>
-        <tr><td style="color:var(--text)">Mike Chen</td><td>289</td><td>956</td><td>22</td><td><span class="badge badge-med">7.7%</span></td><td><span class="health-dot health-ok"></span>Active</td></tr>
-        <tr><td style="color:var(--text)">Alex Rivera</td><td>198</td><td>743</td><td>18</td><td><span class="badge badge-med">9.1%</span></td><td><span class="health-dot health-warn"></span>Away</td></tr>
-        <tr><td style="color:var(--text)">Emma Wilson</td><td>415</td><td>1,502</td><td>44</td><td><span class="badge badge-high">10.6%</span></td><td><span class="health-dot health-ok"></span>Active</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">System Health</div>
-  <div class="grid-2">
-    <div class="grid-card" id="sys-health">
-      <div class="flex gap12 items-center mb16">
-        <span class="health-dot health-ok" id="health-dot"></span>
-        <span id="health-text" style="font-size:14px;font-weight:500">Checking...</span>
-      </div>
-      <div id="health-details" style="font-size:13px;color:var(--text-sec)"></div>
-    </div>
-    <div class="grid-card">
-      <div class="section-title">Quick Stats</div>
-      <div class="flex gap8 flex-wrap">
-        <div style="flex:1;min-width:120px;padding:12px;background:var(--card);border-radius:var(--radius-sm);text-align:center">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--accent)">12</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Total Users</div>
-        </div>
-        <div style="flex:1;min-width:120px;padding:12px;background:var(--card);border-radius:var(--radius-sm);text-align:center">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--success)">99.8%</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Uptime</div>
-        </div>
-        <div style="flex:1;min-width:120px;padding:12px;background:var(--card);border-radius:var(--radius-sm);text-align:center">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:600;color:var(--warning)">42ms</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Avg Response</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+{% include 'tabs/lead_hunter.html' %}
+{% include 'tabs/leads.html' %}
+{% include 'tabs/email_gen.html' %}
+{% include 'tabs/ai_agent.html' %}
+{% include 'tabs/linkedin_tracker.html' %}
+{% include 'tabs/hubspot.html' %}
+{% include 'tabs/meetings.html' %}
+{% include 'tabs/sdr_activity.html' %}
+{% include 'tabs/integrations.html' %}
+{% include 'tabs/admin.html' %}
+</div> <!-- /content-area -->
+</div> <!-- /main-area -->
+</div> <!-- /app-view -->
 <script>
-// Smart backend detection: try current origin first, fallback to Render if needed
-const API_BASE = (function() {
-  // Check if we're in development (localhost)
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return 'http://localhost:5000';
-  }
-  
-  // For production: use current origin (works when backend and frontend are deployed together)
-  return window.location.origin;
-})();
+const API_BASE = window.location.origin;
 
 // SDR Configuration - Kathy Roggers
 const SDR_USER_ID = 1;
 const SDR_WORKSPACE_ID = 1;
 const SDR_NAME = 'Kathy Roggers';
 const SDR_EMAIL = 'kathy.roggers@myflashcloud.com';
-let authToken = localStorage.getItem('lhai_token') || 'demo-token-bypass-auth';
+let authToken = localStorage.getItem('lhai_token') || null;
 let liStatsCache = {};
 let liFeedCache = [];
 let activityLogCache = [];
@@ -1216,11 +645,14 @@ function logout() {
 function showApp() {
   document.getElementById('login-view').style.display = 'none';
   document.getElementById('app-view').style.display = 'flex';
-  document.getElementById('api-url-display').textContent = API_BASE;
+  var apiUrlEl = document.getElementById('api-url-display');
+  if (apiUrlEl) apiUrlEl.textContent = API_BASE;
   var tok = authToken || '......';
-  document.getElementById('token-display').textContent = tok.length > 20 ? tok.slice(0, 20) + '...' : tok;
-  document.getElementById('sidebar-user').textContent = 'Kathy Roggers';
-  showTab('dashboard');
+  var tokenEl = document.getElementById('token-display');
+  if (tokenEl) tokenEl.textContent = tok.length > 20 ? tok.slice(0, 20) + '...' : tok;
+  var sidebarUser = document.getElementById('sidebar-user');
+  if (sidebarUser) sidebarUser.textContent = 'Kathy Roggers';
+  showTab('lead-hunter');
 }
 
 /* Auto-check on load */
@@ -1230,7 +662,16 @@ function showApp() {
     authToken = saved;
     fetch(API_BASE + '/api/admin/system-health', {
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + saved }
-    }).catch(function() {}).then(function() {
+    }).then(function(r) {
+      if (r.ok || r.status === 403 || r.status === 404) {
+        showApp();
+      } else if (r.status === 401) {
+        authToken = null;
+        localStorage.removeItem('lhai_token');
+      } else {
+        showApp();
+      }
+    }).catch(function() {
       showApp();
     });
   }
@@ -1273,8 +714,8 @@ function loadMeetings() {
   var mtgList = document.getElementById('mtg-list');
   mtgList.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)"><span class="spinner"></span> Loading meetings...</div>';
 
-  api('/api/dashboard/summary').then(function(d) {
-    var meetings = d.maton_meetings || [];
+  api('/api/meetings/upcoming').then(function(d) {
+    var meetings = d.upcoming || [];
     if (meetings.length === 0) {
       mtgList.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)">📭 No upcoming meetings found. Check your Google Calendar.</div>';
       return;
@@ -1578,17 +1019,15 @@ function loadDashboard() {
       updateRefreshTime();
       if (refreshBtn) refreshBtn.textContent = '🔄';
     })
-    .catch(function() {
-      // Fallback: try loading legacy stats, then demo
-      var p1 = Promise.resolve();
-      var p2 = Promise.resolve();
-      var p3 = Promise.resolve();
-      Promise.all([p1, p2, p3]).then(function() { renderDashboardDemo(); }).catch(function() { renderDashboardDemo(); });
+    .catch(function(err) {
+      console.error('Dashboard load failed:', err);
+      renderNoDataDashboard();
+      if (refreshBtn) refreshBtn.textContent = '🔄';
     });
 }
 
 function renderRealDashboard(d) {
-  if (!d || !d.stats) { renderDashboardDemo(); return; }
+  if (!d || !d.stats) { renderNoDataDashboard(); return; }
 
   var stats = d.stats || {};
   var profile = d.sdr_profile || {};
@@ -1818,58 +1257,6 @@ function renderRealDashboard(d) {
     timelineEl.innerHTML = '<div style="padding:16px;color:var(--text-muted);font-size:13px;text-align:center">No recent activity. Start your day with outreach!</div>';
   }
 }
-function renderMyDashboard(d) {
-  document.getElementById('dash-stats').innerHTML = [
-    { label: 'My Deals', value: d.total_deals, change: 'Last 180 days', dir: 'up' },
-    { label: 'Pipeline Value', value: '$' + d.total_value.toLocaleString(), change: '', dir: 'up' },
-    { label: 'Avg Deal Size', value: '$' + d.avg_deal.toLocaleString(), change: '', dir: 'up' },
-    { label: 'Deal Stages', value: (d.stages || []).length, change: 'different stages', dir: 'up' }
-  ].map(function(c) {
-    return '<div class="stat-card"><div class="stat-label">' + c.label + '</div><div class="stat-value" style="color:var(--accent)">' + c.value + '</div><div class="stat-change ' + c.dir + '">' + c.change + '</div></div>';
-  }).join('');
-
-  // Timeline — list of your deals by date
-  document.getElementById('dash-timeline').innerHTML = (d.timeline || []).map(function(i) {
-    return '<div class="timeline-item"><div class="time">' + i.date + '</div><div class="desc">' + i.desc + '</div><div class="meta">' + i.stage + ' — $' + i.amount + '</div></div>';
-  }).join('') || '<div style="padding:20px;color:var(--text-muted)">No activity in last 30 days</div>';
-
-  // Targets — stage breakdown
-  document.getElementById('dash-targets').innerHTML = (d.stages || []).map(function(s) {
-    var color = s.pct >= 50 ? 'var(--success)' : s.pct >= 20 ? 'var(--warning)' : 'var(--accent)';
-    return '<div style="margin-bottom:8px"><div style="display:flex;justify-content:space-between;font-size:13px">' +
-      '<span>' + s.stage + '</span><span style="color:var(--accent)">' + s.count + ' (' + s.pct + '%)</span></div>' +
-      '<div class="progress-track"><div class="progress-fill" style="width:' + s.pct + '%;background:' + color + '"></div></div></div>';
-  }).join('');
-
-  // Source breakdown (by stage name for now)
-  var totalDeals = d.total_deals || 1;
-  _setInner('dash-sources', (d.stages || []).map(function(s) {
-    return '<div class="progress-label mb16"><span class="prog-name">' + s.stage + ' <span style="color:var(--text-muted);font-size:11px">(' + s.count + ')</span></span><span class="prog-val" style="color:var(--accent)">' + s.pct + '%</span></div><div class="progress-track mb16"><div class="progress-fill" style="width:' + s.pct + '%;background:var(--accent)"></div></div>';
-  }).join(''));
-
-  // LI feed and follow-ups — show empty or deal list
-  _setInner('dash-li-feed', (d.deals || []).slice(0, 5).map(function(dl) {
-    return '<div class="activity-item"><div class="activity-icon" style="font-size:16px">💼</div><div class="activity-body"><div class="act-title">' + dl.name + '</div><div class="act-meta">$' + dl.amount + ' — ' + dl.stage + '</div></div></div>';
-  }).join('') || '<div style="padding:20px;color:var(--text-muted)">No recent deals</div>');
-
-  _setInner('dash-followups', '');
-}
-
-
-function renderDashboardDemo() {
-  _setInner('dash-stats', '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No dashboard data available. Login and connect your backend to see metrics.</div>');
-  _setInner('dash-funnel', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No pipeline data</div>');
-  _setInner('dash-trend-chart', '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">No activity data</div>');
-  _setInner('dash-targets', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No targets loaded</div>');
-  _setInner('ai-rec-list', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No recommendations</div>');
-  _setInner('dash-timeline', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No activity data</div>');
-  _setInner('dash-outreach-bars', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No outreach data</div>');
-  _setInner('dash-hubspot-summary', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No HubSpot data</div>');
-  _setInner('dash-sources', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No source data</div>');
-  _setInner('dash-li-feed', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No LinkedIn activity</div>');
-  _setInner('dash-followups', '<div style="padding:20px;text-align:center;color:var(--text-muted)">No follow-ups</div>');
-  updateRefreshTime();
-}
 
 function updateRefreshTime() {
   var el = document.getElementById('refresh-text');
@@ -1968,6 +1355,80 @@ function runHunt() {
     });
 }
 
+/* === GOOGLE MAPS SCRAPER === */
+function runGoogleMapsScraper() {
+  var query = document.getElementById('gmaps-query').value.trim();
+  var location = document.getElementById('gmaps-location').value.trim();
+  var limit = parseInt(document.getElementById('gmaps-limit').value) || 10;
+  var statusEl = document.getElementById('gmaps-status');
+  
+  if (!query) {
+    statusEl.textContent = '⚠️ Please enter a business type or industry';
+    statusEl.style.color = 'var(--danger)';
+    return;
+  }
+  
+  if (!location) {
+    statusEl.textContent = '⚠️ Please enter a location';
+    statusEl.style.color = 'var(--danger)';
+    return;
+  }
+  
+  statusEl.innerHTML = '<span class="spinner"></span> Scraping Google Maps for "' + escapeHtml(query) + '" in ' + escapeHtml(location) + '...';
+  statusEl.style.color = 'var(--text-muted)';
+  
+  var payload = {
+    sources: ['google-maps'],
+    icp: {
+      industry: query,
+      location: location,
+      companySize: '',
+      title: '',
+      keywords: ''
+    },
+    limit: limit
+  };
+  
+  api('/api/leads/hunt', { method: 'POST', body: JSON.stringify(payload) })
+    .then(function(r) {
+      var leads = r.leads || [];
+      if (leads.length === 0) {
+        statusEl.textContent = '⚠️ No businesses found. Try different search terms.';
+        statusEl.style.color = 'var(--warning)';
+        return;
+      }
+      
+      statusEl.innerHTML = '✅ Found ' + leads.length + ' businesses! <a href="#" onclick="showTab(\'leads\'); return false;" style="color:var(--accent);text-decoration:underline;margin-left:8px">View in Leads Database →</a>';
+      statusEl.style.color = 'var(--success)';
+      
+      // Show results preview
+      var resultsHtml = '<div style="margin-top:16px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);max-height:300px;overflow-y:auto">';
+      resultsHtml += '<div style="font-size:13px;font-weight:600;margin-bottom:12px;color:var(--text)">📍 Scraped Businesses:</div>';
+      leads.slice(0, 5).forEach(function(l) {
+        resultsHtml += '<div style="padding:10px;margin-bottom:8px;background:var(--surface);border-radius:var(--radius-sm);border-left:3px solid var(--accent)">';
+        resultsHtml += '<div style="font-weight:600;font-size:13px;color:var(--text)">' + escapeHtml(l.company || 'Unknown') + '</div>';
+        if (l.location) resultsHtml += '<div style="font-size:11px;color:var(--text-muted);margin-top:2px">📍 ' + escapeHtml(l.location) + '</div>';
+        if (l.phone) resultsHtml += '<div style="font-size:11px;color:var(--text-sec);margin-top:2px">📞 ' + escapeHtml(l.phone) + '</div>';
+        if (l.website) resultsHtml += '<div style="font-size:11px;margin-top:2px"><a href="' + escapeHtml(l.website) + '" target="_blank" style="color:var(--accent)">🌐 Website</a></div>';
+        resultsHtml += '</div>';
+      });
+      if (leads.length > 5) {
+        resultsHtml += '<div style="text-align:center;padding:8px;color:var(--text-muted);font-size:12px">+ ' + (leads.length - 5) + ' more businesses</div>';
+      }
+      resultsHtml += '</div>';
+      statusEl.innerHTML += resultsHtml;
+      
+      // Refresh leads tab if it's active
+      if (document.getElementById('tab-leads').classList.contains('active')) {
+        loadLeads();
+      }
+    })
+    .catch(function(err) {
+      statusEl.textContent = '❌ Scraping failed: ' + (err.message || 'Check backend connection');
+      statusEl.style.color = 'var(--danger)';
+    });
+}
+
 /* === LEADS === */
 function toggleAllLeads(el) {
   var cbs = document.querySelectorAll('.lead-checkbox');
@@ -1990,8 +1451,8 @@ function batchDeleteLeads() {
   if (!confirm('Delete ' + ids.length + ' leads permanently?')) return;
   api('/api/leads/batch-delete', { method: 'POST', body: JSON.stringify({ ids: ids }) })
     .then(function() { loadLeads(); })
-    .catch(function() {
-      // (no longer demo)
+    .catch(function(err) {
+      console.error('Batch delete failed:', err);
       loadLeads();
     });
 }
@@ -2002,9 +1463,8 @@ function deleteLead(leadId) {
     .then(function() {
       loadLeads();
     })
-    .catch(function() {
-      // (no longer demo)
-      // (no longer demo)
+    .catch(function(err) {
+      console.error('Delete lead failed:', err);
       loadLeads();
     });
 }
@@ -2122,7 +1582,17 @@ function copyEmail() {
 }
 
 function sendEmailFromGen() {
-  alert('Email queued for sending (demo mode)');
+  var subject = document.getElementById('eg-subject').textContent.replace('Subject: ', '');
+  var body = document.getElementById('eg-output').textContent;
+  if (!body || body === 'Fill in lead context and click generate...') { alert('Generate an email first.'); return; }
+  api('/api/gmail/send', {
+    method: 'POST',
+    body: JSON.stringify({ subject: subject, body: body })
+  }).then(function() {
+    alert('Email sent successfully!');
+  }).catch(function() {
+    alert('Send failed — check Gmail integration in Settings.');
+  });
 }
 
 /* === AI CHAT === */
@@ -2151,48 +1621,50 @@ function sendChatMessage(text) {
   msgsEl.scrollTop = msgsEl.scrollHeight;
   var bubble = aiDiv.querySelector('.bubble');
 
+  // Remove authToken check - make API call directly
+  var firehose = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: [{role: 'user', content: msg}] })
+  };
+  // Add auth header only if token exists
   if (authToken) {
-    var firehose = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + authToken },
-      body: JSON.stringify({ messages: [{role: 'user', content: msg}] })
-    };
-    fetch(API_BASE + '/api/ai/chat', firehose).then(function(res) {
-      if (!res.ok) throw new Error('Failed');
-      var reader = res.body.getReader();
-      var decoder = new TextDecoder();
-      var fullText = '';
-      bubble.innerHTML = '';
-      function tryRead() {
-        reader.read().then(function(res2) {
-          if (res2.done) {
-            bubble.innerHTML = formatChatResponse(fullText) || 'No response';
-            msgsEl.scrollTop = msgsEl.scrollHeight;
-            return;
-          }
-          var chunk = decoder.decode(res2.value, { stream: true });
-          var lines = chunk.split('\n');
-          for (var i = 0; i < lines.length; i++) {
-            var line = lines[i];
-            if (line.indexOf('data: ') === 0) {
-              var data = line.slice(6);
-              if (data === '[DONE]') break;
-              try { var parsed = JSON.parse(data); fullText += (parsed.text || parsed.content || ''); }
-              catch(e) { fullText += data; }
-            }
-          }
-          bubble.innerHTML = formatChatResponse(fullText) || '...';
-          msgsEl.scrollTop = msgsEl.scrollHeight;
-          tryRead();
-        }).catch(function() { bubble.innerHTML = formatChatResponse(fullText || 'Error reading stream'); });
-      }
-      tryRead();
-    }).catch(function(err) {
-      bubble.innerHTML = 'Sorry, unable to reach the AI assistant. Error: ' + (err.message || 'Connection failed');
-    });
-  } else {
-    bubble.innerHTML = 'Please connect your backend to use the AI assistant.';
+    firehose.headers['Authorization'] = 'Bearer ' + authToken;
   }
+  
+  fetch(API_BASE + '/api/ai/chat', firehose).then(function(res) {
+    if (!res.ok) throw new Error('Failed');
+    var reader = res.body.getReader();
+    var decoder = new TextDecoder();
+    var fullText = '';
+    bubble.innerHTML = '';
+    function tryRead() {
+      reader.read().then(function(res2) {
+        if (res2.done) {
+          bubble.innerHTML = formatChatResponse(fullText) || 'No response';
+          msgsEl.scrollTop = msgsEl.scrollHeight;
+          return;
+        }
+        var chunk = decoder.decode(res2.value, { stream: true });
+        var lines = chunk.split('\n');
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i];
+          if (line.indexOf('data: ') === 0) {
+            var data = line.slice(6);
+            if (data === '[DONE]') break;
+            try { var parsed = JSON.parse(data); fullText += (parsed.text || parsed.content || ''); }
+            catch(e) { fullText += data; }
+          }
+        }
+        bubble.innerHTML = formatChatResponse(fullText) || '...';
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        tryRead();
+      }).catch(function() { bubble.innerHTML = formatChatResponse(fullText || 'Error reading stream'); });
+    }
+    tryRead();
+  }).catch(function(err) {
+    bubble.innerHTML = 'Sorry, unable to reach the AI assistant. Error: ' + (err.message || 'Connection failed');
+  });
 }
 
 
@@ -2303,7 +1775,9 @@ function displayParsedPeople(people, container) {
 
 /* === LINKEDIN TRACKER === */
 function loadLinkedInTracker() {
-  api('/api/linkedin/stats').then(function(s) { if (s) var ls = s; }).catch(function() {}).then(function() {
+  api('/api/linkedin/stats').then(function(s) { 
+    if (s) liStatsCache = s; 
+  }).catch(function() {}).then(function() {
     api('/api/linkedin/activities?per_page=100').then(function(a) {
       if (a && a.activities) {
         liFeedCache = a.activities.map(function(act) {
@@ -2372,19 +1846,6 @@ function updateLiStatus(activityId, newType) {
   });
 }
 
-function deleteLiActivity(activityId) {
-  if (!confirm('Are you sure you want to delete this activity?')) return;
-  api('/api/linkedin/activities/' + activityId, {
-    method: 'DELETE'
-  }).then(function() {
-    signalDataChanged();
-    loadLinkedInTracker();
-  }).catch(function() {
-    signalDataChanged();
-    loadLinkedInTracker();
-  });
-}
-
 function renderLinkedInTracker() {
   var ls = liStatsCache || {};
   document.getElementById('li-stats').innerHTML = [
@@ -2397,7 +1858,8 @@ function renderLinkedInTracker() {
     return '<div class="li-stat-card"><div class="val" style="color:' + s.color + '">' + s.val + '</div><div class="lbl">' + s.label + '</div></div>';
   }).join('');
 
-  var filter = document.getElementById('li-feed-filter').value;
+  var filterEl = document.getElementById('li-feed-filter');
+  var filter = filterEl ? filterEl.value : '';
   var feed = liFeedCache.filter(function(a) {
     var typeMap = {
       connection_request: 'connection_sent', connection_accepted: 'connection_accepted',
@@ -2419,7 +1881,18 @@ function renderLinkedInTracker() {
     { val: 'followup_sent', icon: '🔄', label: 'Follow-up' }
   ];
 
-  document.getElementById('li-feed').innerHTML = '<div style="margin-bottom:8px;display:flex;gap:8px;align-items:center"><label style="font-size:12px;color:var(--text-sec);display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" id="li-select-all" onchange="liToggleAll(this)"> Select All</label><button class="btn-sm btn-danger" onclick="liDeleteSelected()" id="li-delete-selected" style="display:none">🗑️ Delete Selected (<span id="li-selected-count">0</span>)</button></div>' + (feed.length ? ('<div class="table-container" style="overflow-x:auto"><table><thead><tr><th style="padding:8px 10px;font-size:11px;width:30px"></th><th style="padding:8px 10px;font-size:11px">Name</th><th style="padding:8px 10px;font-size:11px">Title</th><th style="padding:8px 10px;font-size:11px">Activity</th><th style="padding:8px 10px;font-size:11px">LinkedIn</th><th style="padding:8px 10px;font-size:11px">Status</th><th style="padding:8px 10px;font-size:11px">Actions</th></tr></thead><tbody>' + feed.map(function(a) {
+  var toolbarHtml =
+    '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm)">' +
+      '<label style="font-size:13px;color:var(--text-sec);display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:500">' +
+        '<input type="checkbox" id="li-select-all" onchange="liToggleAll(this)" style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer"> Select All' +
+      '</label>' +
+      '<span id="li-selected-badge" style="display:none;font-size:12px;padding:2px 10px;border-radius:12px;background:var(--accent-glow);color:var(--accent);font-weight:600">0 selected</span>' +
+      '<div style="flex:1"></div>' +
+      (feed.length ? '<button class="btn-sm btn-danger" onclick="liDeleteAll()" style="opacity:0.7" title="Delete all ' + feed.length + ' activities in current filter">🗑️ Delete All (' + feed.length + ')</button>' : '') +
+      '<button class="btn-sm btn-danger" onclick="liDeleteSelected()" id="li-delete-selected" style="display:none">🗑️ Delete Selected (<span id="li-selected-count">0</span>)</button>' +
+    '</div>';
+
+  document.getElementById('li-feed').innerHTML = toolbarHtml + (feed.length ? ('<div class="table-container" style="overflow-x:auto"><table><thead><tr><th style="padding:8px 10px;font-size:11px;width:30px"></th><th style="padding:8px 10px;font-size:11px">Name</th><th style="padding:8px 10px;font-size:11px">Title</th><th style="padding:8px 10px;font-size:11px">Activity</th><th style="padding:8px 10px;font-size:11px">LinkedIn</th><th style="padding:8px 10px;font-size:11px">Status</th><th style="padding:8px 10px;font-size:11px">Actions</th></tr></thead><tbody>' + feed.map(function(a) {
     var curIcon = '+';
     var curLabel = (a.type || '').replace(/_/g, ' ');
     for (var i = 0; i < statusOptions.length; i++) {
@@ -2766,14 +2239,56 @@ function loadAdmin() {
   var healthDot = document.getElementById('health-dot');
   var healthText = document.getElementById('health-text');
   var healthDetails = document.getElementById('health-details');
-      api('/api/admin/system-health').then(function(r) {
-      healthText.textContent = 'All Systems Operational';
-      healthDetails.innerHTML = '<div>API: ✅ Online</div><div>Database: ✅ Connected</div><div>Auth: ✅ Active</div><div>Groq AI: ✅ Available</div><div>Last checked: ' + new Date().toLocaleString() + '</div>';
-    }).catch(function(e) {
-      healthText.textContent = 'System Status Unknown';
-      healthDot.className = 'health-dot health-warn';
-      healthDetails.innerHTML = '<div>API: ⚠️ Unreachable — showing demo</div>';
-    });
+  var t0 = Date.now();
+
+  api('/api/admin/system-health').then(function(r) {
+    var ms = Date.now() - t0;
+    if (healthText) healthText.textContent = 'All Systems Operational';
+    if (healthDot) healthDot.className = 'health-dot health-ok';
+    if (healthDetails) healthDetails.innerHTML =
+      '<div>API: ✅ Online</div>' +
+      '<div>Database: ' + (r.database ? '✅ Connected' : '⚠️ Degraded') + '</div>' +
+      '<div>Auth: ✅ Active</div>' +
+      '<div>Groq AI: ' + (r.groq ? '✅ Available' : '⚠️ Unavailable') + '</div>' +
+      '<div style="margin-top:6px;color:var(--text-muted)">Last checked: ' + new Date().toLocaleTimeString() + '</div>';
+    var respEl = document.getElementById('admin-stat-response');
+    if (respEl) respEl.textContent = ms + 'ms';
+    var uptimeEl = document.getElementById('admin-stat-uptime');
+    if (uptimeEl) uptimeEl.textContent = r.uptime || '—';
+    var usersEl = document.getElementById('admin-stat-users');
+    if (usersEl) usersEl.textContent = r.user_count || '—';
+  }).catch(function(e) {
+    if (healthText) healthText.textContent = 'Cannot reach backend';
+    if (healthDot) healthDot.className = 'health-dot health-fail';
+    if (healthDetails) healthDetails.innerHTML = '<div>API: ❌ Unreachable</div><div style="margin-top:4px;color:var(--text-muted);font-size:12px">' + (e && e.message ? e.message : 'Check server logs') + '</div>';
+  });
+
+  api('/api/admin/sdr-performance').then(function(r) {
+    var rows = (r.sdrs || []);
+    var tbody = document.getElementById('admin-sdr-body');
+    if (!tbody) return;
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:20px">No SDR data available</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(function(s) {
+      var statusCls = s.active ? 'health-ok' : 'health-warn';
+      var statusLabel = s.active ? 'Active' : 'Away';
+      var convCls = (parseFloat(s.conversion)||0) >= 9 ? 'badge-high' : 'badge-med';
+      return '<tr>' +
+        '<td style="color:var(--text)">' + escapeHtml(s.name || '—') + '</td>' +
+        '<td>' + (s.leads_found || 0) + '</td>' +
+        '<td>' + (s.emails_sent || 0) + '</td>' +
+        '<td>' + (s.meetings || 0) + '</td>' +
+        '<td><span class="badge ' + convCls + '">' + (s.conversion || '0') + '%</span></td>' +
+        '<td><span class="health-dot ' + statusCls + '"></span>' + statusLabel + '</td>' +
+      '</tr>';
+    }).join('');
+  }).catch(function() {
+    var tbody = document.getElementById('admin-sdr-body');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:20px">SDR performance data unavailable</td></tr>';
+  });
+}
 
 /* === API CONFIG === */
 function copyToken() {
@@ -2801,12 +2316,20 @@ function testConnection() {
   });
 }
 
-/* Delete LI activity */
+/* Delete LI activity — single canonical definition */
 function deleteLiActivity(id) {
-      api('/api/linkedin/activities/' + id, { method: 'DELETE' }).catch(function() {});
-  }
-  liFeedCache = liFeedCache.filter(function(a, i) { return i !== id; });
-  loadLinkedInTracker();
+  if (!confirm('Are you sure you want to delete this activity?')) return;
+  api('/api/linkedin/activities/' + id, { method: 'DELETE' })
+    .then(function() {
+      liFeedCache = liFeedCache.filter(function(a) { return String(a._id) !== String(id); });
+      signalDataChanged();
+      loadLinkedInTracker();
+    })
+    .catch(function(err) {
+      console.error('Failed to delete activity:', err);
+      loadLinkedInTracker();
+    });
+}
 
 function liToggleAll(el) {
   var cbs = document.querySelectorAll('.li-checkbox');
@@ -2818,8 +2341,15 @@ function liUpdateSelected() {
   var cbs = document.querySelectorAll('.li-checkbox:checked');
   var count = cbs.length;
   var btn = document.getElementById('li-delete-selected');
-  document.getElementById('li-selected-count').textContent = count;
-  btn.style.display = count > 0 ? 'inline-block' : 'none';
+  var countEl = document.getElementById('li-selected-count');
+  var badge = document.getElementById('li-selected-badge');
+  if (countEl) countEl.textContent = count;
+  if (badge) { badge.textContent = count + ' selected'; badge.style.display = count > 0 ? 'inline-block' : 'none'; }
+  if (btn) btn.style.display = count > 0 ? 'inline-block' : 'none';
+  // Sync select-all checkbox state
+  var all = document.querySelectorAll('.li-checkbox');
+  var selectAllEl = document.getElementById('li-select-all');
+  if (selectAllEl && all.length > 0) selectAllEl.indeterminate = count > 0 && count < all.length;
 }
 
 function liDeleteSelected() {
@@ -2827,13 +2357,33 @@ function liDeleteSelected() {
   var ids = [];
   for (var i = 0; i < cbs.length; i++) ids.push(cbs[i].value);
   if (ids.length === 0) return;
-  if (!confirm('Delete ' + ids.length + ' selected activity/activities?')) return;
-      api('/api/linkedin/activities/batch-delete', {
-      method: 'POST',
-      body: JSON.stringify({ ids: ids })
-    }).catch(function() {});
-  }
-  loadLinkedInTracker();
+  if (!confirm('Permanently delete ' + ids.length + ' selected activit' + (ids.length === 1 ? 'y' : 'ies') + ' from Supabase?')) return;
+  _liExecuteBatchDelete(ids);
+}
+
+function liDeleteAll() {
+  var allIds = [];
+  document.querySelectorAll('.li-checkbox').forEach(function(cb) { allIds.push(cb.value); });
+  if (allIds.length === 0) return;
+  if (!confirm('Permanently delete ALL ' + allIds.length + ' activit' + (allIds.length === 1 ? 'y' : 'ies') + ' from Supabase? This cannot be undone.')) return;
+  _liExecuteBatchDelete(allIds);
+}
+
+function _liExecuteBatchDelete(ids) {
+  var feedEl = document.getElementById('li-feed');
+  if (feedEl) feedEl.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted)"><span class="spinner"></span> Deleting ' + ids.length + ' activities...</div>';
+  api('/api/linkedin/activities/batch-delete', {
+    method: 'POST',
+    body: JSON.stringify({ ids: ids })
+  }).then(function(r) {
+    liFeedCache = liFeedCache.filter(function(a) { return ids.indexOf(String(a._id)) === -1; });
+    signalDataChanged();
+    loadLinkedInTracker();
+  }).catch(function(err) {
+    console.error('Batch delete failed:', err);
+    alert('Delete failed: ' + (err && err.message ? err.message : 'Check connection'));
+    loadLinkedInTracker();
+  });
 }
 </script>
 

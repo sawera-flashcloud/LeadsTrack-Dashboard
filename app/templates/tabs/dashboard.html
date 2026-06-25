@@ -1,0 +1,127 @@
+
+<!-- DASHBOARD — Redesigned with timeframe filters + enhanced UX -->
+<div class="tab-content active" id="tab-dashboard">
+
+  <!-- ═══ TIMEFRAME FILTER ═══ -->
+  <div class="timeframe-bar" id="timeframe-bar">
+    <button class="timeframe-pill active" data-days="7" onclick="switchTimeframe(7)">1 Week</button>
+    <button class="timeframe-pill" data-days="30" onclick="switchTimeframe(30)">1 Month</button>
+    <button class="timeframe-pill" data-days="90" onclick="switchTimeframe(90)">3 Months</button>
+    <button class="timeframe-pill" data-days="180" onclick="switchTimeframe(180)">6 Months</button>
+    <button class="timeframe-pill" data-days="all" onclick="switchTimeframe('all')">All Time</button>
+  </div>
+
+  <!-- ═══ METRIC CARDS (updates with timeframe) ═══ -->
+  <div class="metric-grid" id="dash-metrics">
+    <div class="metric-card"><div class="metric-icon">📧</div><div class="metric-value" style="color:var(--accent)">—</div><div class="metric-label">Emails Sent</div><div class="metric-sub" id="metric-sub-emails">past period</div><div class="metric-glow" style="background:var(--accent)"></div></div>
+    <div class="metric-card"><div class="metric-icon">📅</div><div class="metric-value" style="color:var(--success)">—</div><div class="metric-label">Meetings Booked</div><div class="metric-sub" id="metric-sub-meetings">past period</div><div class="metric-glow" style="background:var(--success)"></div></div>
+    <div class="metric-card"><div class="metric-icon">🔗</div><div class="metric-value" style="color:#5b8def">—</div><div class="metric-label">Connections Sent</div><div class="metric-sub" id="metric-sub-connections">LinkedIn</div><div class="metric-glow" style="background:#5b8def"></div></div>
+    <div class="metric-card"><div class="metric-icon">💬</div><div class="metric-value" style="color:var(--warning)">—</div><div class="metric-label">Replies</div><div class="metric-sub" id="metric-sub-replies">total received</div><div class="metric-glow" style="background:var(--warning)"></div></div>
+    <div class="metric-card"><div class="metric-icon">🎯</div><div class="metric-value" style="color:#c44dff">—</div><div class="metric-label">New Leads</div><div class="metric-sub" id="metric-sub-leads">created</div><div class="metric-glow" style="background:#c44dff"></div></div>
+    <div class="metric-card"><div class="metric-icon">✨</div><div class="metric-value" style="color:#f5a623">—</div><div class="metric-label">Enrichment Rate</div><div class="metric-sub" id="metric-sub-enrichment">% enriched</div><div class="metric-glow" style="background:#f5a623"></div></div>
+  </div>
+
+  <!-- ═══ TOP ROW: SDR Identity + Quick Stats ═══ -->
+  <div class="sdr-bar" id="sdr-bar" style="margin-bottom:20px">
+    <div class="sdr-avatar">?</div>
+    <div class="sdr-info">
+      <div class="name">Loading...</div>
+      <div class="role">SDR · Loading...</div>
+    </div>
+    <div class="sdr-metrics">
+      <div><div class="val" style="color:var(--accent)"><span class="spinner"></span></div><div class="lbl">🔥 Day Streak</div></div>
+      <div><div class="val" style="color:var(--success)"><span class="spinner"></span></div><div class="lbl">🏆 Rank</div></div>
+      <div><div class="val" style="color:var(--warning)"><span class="spinner"></span></div><div class="lbl">📈 Leads Gen.</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ ROW 1: KPI Cards (8 big metric cards) ═══ -->
+  <div class="stat-grid" id="dash-stats" style="margin-bottom:20px">
+    <div class="loading" style="grid-column:1/-1"><span class="spinner"></span> Loading dashboard data...</div>
+  </div>
+
+  <!-- ═══ ROW 2: Three-pillar — Pipeline + Weekly Activity + Meetings Today ═══ -->
+  <div class="grid-3 mb16">
+    <div class="chart-container">
+      <div class="chart-title" style="display:flex;justify-content:space-between;align-items:center">
+        <span>🔻 Pipeline Funnel</span>
+        <span id="funnel-total" style="font-size:11px;color:var(--text-muted)"></span>
+      </div>
+      <div class="funnel-chart" id="dash-funnel"></div>
+      <div id="funnel-stats" style="font-size:11px;color:var(--text-muted);margin-top:6px;text-align:center"></div>
+    </div>
+    <div class="chart-container">
+      <div class="chart-title" style="display:flex;justify-content:space-between;align-items:center">
+        <span>📊 Activity Trend</span>
+        <span style="font-size:11px;color:var(--text-muted);font-weight:400" id="trend-period-label">7 days</span>
+      </div>
+      <div class="trend-chart" id="dash-trend-chart"></div>
+      <div class="chart-legend" id="dash-trend-legend"></div>
+    </div>
+    <div class="chart-container" style="display:flex;flex-direction:column;overflow:hidden;max-height:340px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-shrink:0">
+        <span>📅 Upcoming Meetings <span style="font-weight:400;font-size:11px;color:var(--text-muted)">— Google</span></span>
+        <span id="mtg-week-count" style="font-size:10px;padding:2px 8px;background:var(--accent-glow);color:var(--accent);border-radius:20px">0</span>
+      </div>
+      <div id="dash-maton-meetings" class="scrollable-meetings" style="flex:1;min-height:0;margin-top:8px">
+        <div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">Loading meetings...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ROW 4: Two columns — Work Queue + AI Recs side by side ═══ -->
+  <div class="grid-2 mb16">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div class="section-title" style="margin:0 0 12px">🎯 Today's Work Queue</div>
+      <div id="dash-targets" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
+      <!-- Quick action buttons -->
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn-sm" onclick="showTab('leads')" style="background:var(--accent-glow);color:var(--accent);flex:1">👥 View Leads</button>
+        <button class="btn-sm" onclick="showTab('email-gen')" style="background:var(--accent-glow);color:var(--accent);flex:1">✉️ Send Emails</button>
+        <button class="btn-sm" onclick="showTab('linkedin-tracker')" style="background:var(--accent-glow);color:var(--accent);flex:1">🔗 LinkedIn</button>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="section-title" style="margin:0">🤖 AI Recommended Actions</div>
+        <span style="font-size:10px;color:var(--text-muted)">Groq LPU</span>
+      </div>
+      <div id="ai-rec-list"></div>
+    </div>
+  </div>
+
+  <!-- ═══ ROW 5: Condensed Bottom Row ═══ -->
+  <div class="grid-3 mb16">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div class="section-title" style="margin:0">🏢 HubSpot Pipeline</div>
+        <span id="hs-pulse" style="width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block"></span>
+      </div>
+      <div id="dash-hubspot-summary" style="font-size:13px;color:var(--text-sec)">Loading...</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div class="section-title" style="margin:0 0 8px">📊 Outreach Breakdown</div>
+      <div id="dash-outreach-bars" style="margin-top:8px"></div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div class="section-title" style="margin:0 0 8px">🕐 Activity Timeline</div>
+      <div class="timeline" style="max-height:200px;overflow-y:auto;padding-right:6px" id="dash-timeline"></div>
+    </div>
+  </div>
+
+  <!-- ═══ ROW 6: Source Performance + Activity Feed + Follow-ups ═══ -->
+  <div class="grid-3 mb16">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div class="section-title" style="margin:0 0 8px">📈 Lead Source Performance</div>
+      <div id="dash-sources" style="margin-top:8px"></div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div class="section-title" style="margin:0 0 8px">🔗 LinkedIn & Email Feed</div>
+      <div id="dash-li-feed"></div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px">
+      <div class="section-title" style="margin:0 0 8px">⏰ Follow-ups Due</div>
+      <div id="dash-followups"></div>
+    </div>
+  </div>
+</div>

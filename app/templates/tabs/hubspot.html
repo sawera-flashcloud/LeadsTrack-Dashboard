@@ -1,0 +1,25 @@
+
+<!-- HUBSPOT PIPELINE -->
+<div class="tab-content" id="tab-hubspot">
+  <div class="flex align-center gap8 mb16">
+    <div class="section-title" style="margin-bottom:0">📊 Kathy Roggers — Deals</div>
+    <span id="hs-status" style="font-size:12px;padding:4px 10px;border-radius:20px;background:rgba(124,109,250,.12);color:var(--accent)">checking...</span>
+    <button class="btn-sm ml-auto" onclick="loadHubSpot()">🔄 Refresh</button>
+  </div>
+  <div class="grid-4 mb16" id="hs-stat-cards">
+    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-open-deals">—</div><div style="font-size:12px;color:var(--text-muted)">Open Deals</div></div>
+    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-owners">—</div><div style="font-size:12px;color:var(--text-muted)">Active Owners</div></div>
+    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-value">—</div><div style="font-size:12px;color:var(--text-muted)">Pipeline Value</div></div>
+    <div class="grid-card"><div style="font-size:24px;font-weight:700" id="hs-avg">—</div><div style="font-size:12px;color:var(--text-muted)">Avg Deal Size</div></div>
+  </div>
+  <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+    <select id="hs-sort" class="input" style="width:auto" onchange="hsRender()">
+      <option value="deals">Sort by deals</option>
+      <option value="value">Sort by value</option>
+      <option value="name">Sort by name</option>
+    </select>
+  </div>
+  <div id="hs-loading" style="text-align:center;padding:40px;color:var(--text-muted)"><span class="spinner"></span> Loading HubSpot data...</div>
+  <div id="hs-error" style="display:none;text-align:center;padding:40px;color:var(--danger)"></div>
+  <div id="hs-grid" style="display:none"></div>
+</div>

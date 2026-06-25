@@ -1,0 +1,21 @@
+
+<!-- API CONFIG -->
+<div class="tab-content" id="tab-api-config">
+  <div class="section-title">Backend Connection</div>
+  <div class="api-config-area">
+    <label>API Base URL</label>
+    <div class="config-value" id="api-url-display"></div>
+    <label>Auth Token</label>
+    <div class="token-row">
+      <code id="token-display">......</code>
+      <button class="btn-secondary" onclick="copyToken()">📋 Copy</button>
+    </div>
+    <div style="margin-top:16px;">
+      <label>Connection Status</label>
+      <div class="flex gap12 items-center">
+        <button class="btn-primary" onclick="testConnection()">Test Connection</button>
+        <span id="test-result" style="font-size:13px;"></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+
+<!-- EMAIL GENERATOR -->
+<div class="tab-content" id="tab-email-gen">
+  <div class="grid-2">
+    <div class="grid-card">
+      <div class="section-title">Lead Context</div>
+      <div class="form-group"><label>Name</label><input id="eg-name" placeholder="Lead name"></div>
+      <div class="form-group"><label>Company</label><input id="eg-company" placeholder="Company name"></div>
+      <div class="form-group"><label>Title</label><input id="eg-title" placeholder="Job title"></div>
+      <div class="form-group"><label>Industry</label><input id="eg-industry" placeholder="e.g. SaaS, Fintech"></div>
+      <div class="form-group"><label>Pain Points</label><textarea id="eg-pain" placeholder="Describe their pain points or context..."></textarea></div>
+      <div class="form-group"><label>Email Type</label>
+        <div class="toggle" id="eg-type-toggle">
+          <button class="active" onclick="setEmailType('cold',this)">Cold Email</button>
+          <button onclick="setEmailType('followup',this)">Follow Up</button>
+          <button onclick="setEmailType('linkedin-dm',this)">LinkedIn DM</button>
+          <button onclick="setEmailType('sequence',this)">Sequence</button>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="generateEmail()">✨ Generate Email</button>
+    </div>
+    <div class="grid-card">
+      <div class="section-title">Generated Output</div>
+      <div id="eg-subject" style="font-size:13px;color:var(--text-muted);margin-bottom:8px;font-family:'JetBrains Mono',monospace"></div>
+      <div class="gen-output" id="eg-output">Fill in lead context and click generate...</div>
+      <div class="flex gap8 mt16">
+        <button class="btn-secondary" onclick="copyEmail()">📋 Copy</button>
+        <button class="btn-secondary" onclick="generateEmail()">🔄 Regenerate</button>
+        <button class="btn-primary" onclick="sendEmailFromGen()">📤 Send</button>
+      </div>
+    </div>
+  </div>
+</div>
